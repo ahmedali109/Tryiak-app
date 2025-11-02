@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:tryiak/core/helpers/extensions.dart';
+import '../../../core/helpers/extensions.dart';
 
 import '../../../core/helpers/app_regex.dart';
 import '../data/model/login_request_body.dart';

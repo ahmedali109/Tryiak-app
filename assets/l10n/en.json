@@ -84,8 +84,8 @@
   "items_count": "Items: {}",
   "total_amount": "Total: ${}",
   "cart_cleared_after_checkout": "Your cart will be cleared after checkout.",
-  "please_enter_valid_email": "Please enter a valid email",
-  "reset_link_sent_successfully": "Reset link sent successfully",
+  "please_enter_valid_email": "Please enter a valid email address",
+  "reset_link_sent_successfully": "Reset link sent successfully! Check your email.",
   "no_account_found_error": "No account found with this email address. Please check your email or create a new account",
   "back_to_login": "Back to Login",
   "reset_password": "Reset Password",
@@ -169,5 +169,14 @@
   "didnt_receive_code": "Didn't receive the code?",
   "resend": "Resend",
   "set_password": "Set Password",
-  "create_secure_password": "Create a secure password for your account"
+  "create_secure_password": "Create a secure password for your account",
+  "reset_password_title": "Reset Password",
+  "reset_password_subtitle": "Enter your new password below. Make sure it's strong and secure.",
+  "new_password": "New Password",
+  "confirm_new_password": "Confirm New Password",
+  "password_reset_successfully": "Password reset successfully! You can now log in with your new password.",
+  "password_reset_success_title": "Password Reset Successfully!",
+  "password_reset_success_subtitle": "Your password has been updated. You will be redirected to the login page shortly.",
+  "redirecting_to_login": "Redirecting to login...",
+  "password_must_contain": "Password must meet all requirements"
 }

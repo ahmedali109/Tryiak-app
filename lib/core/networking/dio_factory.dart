@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:tryiak/core/helpers/shared_pref_helper.dart';
+import '../helpers/shared_pref_helper.dart';
 
 import '../constants/app_strings.dart';
 

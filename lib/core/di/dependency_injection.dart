@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-
 import '../../features/auth/data/repo/auth.dart';
 import '../../features/auth/logic/auth_cubit.dart';
 import '../networking/api_constants.dart';

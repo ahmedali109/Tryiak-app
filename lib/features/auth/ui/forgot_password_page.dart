@@ -1,15 +1,15 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/helpers/app_regex.dart';
+import '../../../core/router/go_router.dart';
 import '../../../core/widgets/toast.dart';
-
 import '../data/model/forget_password_request_body.dart';
 import '../logic/auth_cubit.dart';
-
 import 'widgets/forgot_password_content.dart';
 import 'widgets/forgot_password_header.dart';
 import 'widgets/forgot_password_icon.dart';
@@ -82,6 +82,78 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
     return null;
   }
 
+  /// Extract email and token from the reset password URL
+  Map<String, String>? _parseResetPasswordUrl(String message) {
+    try {
+      log('Parsing reset URL from message: $message');
+
+      // Look for various URL formats
+      final deepLinkPattern = RegExp(r'tryiak://[^\s]*');
+      final httpsLinkPattern =
+          RegExp(r'https://tryiak[^\s]*reset-password[^\s]*');
+      final httpLinkPattern = RegExp(r'http://[^\s]*reset-password[^\s]*');
+
+      String? url;
+
+      // Check for deep link format first
+      var match = deepLinkPattern.firstMatch(message);
+      if (match != null) {
+        url = match.group(0)!;
+        log('Found deep link URL: $url');
+      } else {
+        // Check for HTTPS format
+        match = httpsLinkPattern.firstMatch(message);
+        if (match != null) {
+          url = match.group(0)!;
+          log('Found HTTPS URL: $url');
+        } else {
+          // Fallback to HTTP format
+          match = httpLinkPattern.firstMatch(message);
+          if (match != null) {
+            url = match.group(0)!;
+            log('Found HTTP URL: $url');
+          }
+        }
+      }
+
+      if (url != null) {
+        // Handle nested URL structure by finding the last occurrence of token and email
+        // Split by 'token=' and get the last occurrence for the actual token
+        final tokenParts = url.split('token=');
+        if (tokenParts.length >= 2) {
+          // Get the last part after 'token='
+          final lastTokenPart = tokenParts.last;
+
+          // Find where the token ends (either at '&' or end of string)
+          final ampersandIndex = lastTokenPart.indexOf('&');
+          final actualToken = ampersandIndex != -1
+              ? lastTokenPart.substring(0, ampersandIndex)
+              : lastTokenPart;
+
+          // Find email parameter
+          final emailPattern = RegExp(r'email=([^&\s]+)');
+          final emailMatch = emailPattern.firstMatch(url);
+
+          if (emailMatch != null && actualToken.isNotEmpty) {
+            final email = emailMatch.group(1)!;
+
+            log('Extracted token: $actualToken');
+            log('Extracted email: $email');
+
+            return {
+              'token': actualToken,
+              'email': Uri.decodeComponent(email),
+            };
+          }
+        }
+      }
+      return null;
+    } catch (e) {
+      log('Error parsing reset password URL: $e');
+      return null;
+    }
+  }
+
   Future<void> _sendResetLink() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -96,7 +168,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
       );
       final message = await authCubit.forgotPassword(requestBody);
       log("Attempting to send reset email to: ${_emailController.text.trim()}");
-      log(message);
+      log("Full response message: $message");
+      log("Message type: ${message.runtimeType}");
+      log("Message length: ${message.length}");
 
       // Check if the message indicates success (no error keywords)
       if (message.toLowerCase().contains('success') ||
@@ -104,20 +178,51 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
               !message.toLowerCase().contains('error') &&
               !message.toLowerCase().contains('failed') &&
               !message.toLowerCase().contains('not found')) {
-        setState(() {
-          _isLinkSent = true;
-        });
+        // Try to parse reset password URL from the message
+        final resetData = _parseResetPasswordUrl(message);
 
-        // Show success message
-        if (mounted) {
+        if (resetData != null && mounted) {
+          // Navigate directly to reset password screen with extracted data
           showSuccessToast(
               context: context, message: "reset_link_sent_successfully".tr());
-          // Clear the email field
-          _emailController.clear();
-          await Future.delayed(const Duration(seconds: 4));
-          // Navigate back to the previous screen
+
+          await Future.delayed(const Duration(seconds: 1));
+
           if (mounted) {
-            Navigator.of(context).pop();
+            context.push(
+              '${AppPath.resetPassword}?email=${Uri.encodeComponent(resetData['email']!)}&token=${resetData['token']}',
+            );
+          }
+        } else {
+          // If URL parsing fails, show a message with manual navigation option
+          log('URL parsing failed, showing manual option');
+
+          // Show success message - in production, user would check email
+          if (mounted) {
+            showSuccessToast(
+                context: context, message: "reset_link_sent_successfully".tr());
+
+            // In production, users will click the link in their email
+            // For development/testing purposes, we can show a message
+            // Remove this navigation and let users use the email link
+
+            // Show info that user needs to check their email
+            await Future.delayed(const Duration(seconds: 2));
+
+            if (mounted) {
+              showSuccessToast(
+                  context: context,
+                  message:
+                      "Please check your email and click the reset password link to continue.");
+
+              // Clear the form and go back to login after showing the message
+              _emailController.clear();
+              await Future.delayed(const Duration(seconds: 3));
+
+              if (mounted) {
+                Navigator.of(context).pop();
+              }
+            }
           }
         }
       } else {

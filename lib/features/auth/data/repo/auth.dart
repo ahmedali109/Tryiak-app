@@ -11,10 +11,11 @@ import '../model/logout_request_body.dart';
 import '../model/logout_response.dart';
 import '../model/resend_verification_request_body.dart';
 import '../model/resend_verification_response.dart';
+import '../model/reset_password_request_body.dart';
+import '../model/reset_password_response.dart';
 import '../model/sign_up_request_body.dart';
 import '../model/sign_up_response.dart';
 import '../model/user.model.dart';
-
 import '../model/verify_email_request_body.dart';
 import '../model/verify_email_response.dart';
 import 'auth.repo.dart';
@@ -107,6 +108,17 @@ class Authentication implements AuthRepo {
       ResendVerificationRequestBody body) async {
     try {
       final response = await _apiService.resendVerificationCode(body);
+      return ApiResult.success(response);
+    } catch (e) {
+      return ApiResult.failure(ErrorHandler.handle(e));
+    }
+  }
+
+  @override
+  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequestBody body) async {
+    try {
+      final response = await _apiService.resetPassword(body);
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(ErrorHandler.handle(e));

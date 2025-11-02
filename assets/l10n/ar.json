@@ -81,8 +81,8 @@
   "items_count": "العناصر: {}",
   "total_amount": "المجموع: ${}",
   "cart_cleared_after_checkout": "ستتم مسح السلة بعد إتمام عملية الدفع.",
-  "please_enter_valid_email": "يرجى إدخال بريد إلكتروني صحيح",
-  "reset_link_sent_successfully": "تم إرسال رابط إعادة التعيين بنجاح",
+  "please_enter_valid_email": "يرجى إدخال بريد إلكتروني صالح",
+  "reset_link_sent_successfully": "تم إرسال رابط إعادة التعيين بنجاح! تحقق من بريدك الإلكتروني.",
   "no_account_found_error": "لم يتم العثور على حساب بهذا البريد الإلكتروني. يرجى التحقق من البريد الإلكتروني أو إنشاء حساب جديد",
   "back_to_login": "العودة لتسجيل الدخول",
   "reset_password": "إعادة تعيين كلمة المرور",
@@ -166,5 +166,14 @@
   "didnt_receive_code": "لم تستلم الرمز؟",
   "resend": "إعادة إرسال",
   "set_password": "تعيين كلمة المرور",
-  "create_secure_password": "قم بإنشاء كلمة مرور آمنة لحسابك"
+  "create_secure_password": "قم بإنشاء كلمة مرور آمنة لحسابك",
+  "reset_password_title": "إعادة تعيين كلمة المرور",
+  "reset_password_subtitle": "أدخل كلمة المرور الجديدة أدناه. تأكد من أنها قوية وآمنة.",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "password_reset_successfully": "تم إعادة تعيين كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة.",
+  "password_reset_success_title": "تم إعادة تعيين كلمة المرور بنجاح!",
+  "password_reset_success_subtitle": "تم تحديث كلمة المرور الخاصة بك. سيتم إعادة توجيهك إلى صفحة تسجيل الدخول قريباً.",
+  "redirecting_to_login": "جاري إعادة التوجيه إلى تسجيل الدخول...",
+  "password_must_contain": "كلمة المرور يجب أن تفي بجميع المتطلبات"
 }

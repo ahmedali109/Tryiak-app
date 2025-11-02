@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:tryiak/features/auth/data/model/resend_verification_request_body.dart';
 
 import '../../features/auth/data/model/forget_password_request_body.dart';
 import '../../features/auth/data/model/forget_password_response.dart';
@@ -8,6 +7,7 @@ import '../../features/auth/data/model/login_request_body.dart';
 import '../../features/auth/data/model/login_response.dart';
 import '../../features/auth/data/model/logout_request_body.dart';
 import '../../features/auth/data/model/logout_response.dart';
+import '../../features/auth/data/model/resend_verification_request_body.dart';
 import '../../features/auth/data/model/resend_verification_response.dart';
 import '../../features/auth/data/model/reset_password_request_body.dart';
 import '../../features/auth/data/model/reset_password_response.dart';

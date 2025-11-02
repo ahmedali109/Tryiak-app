@@ -7,6 +7,7 @@ import '../../../core/constants/app_strings.dart';
 import '../../../core/helpers/shared_pref_helper.dart';
 import '../../../core/networking/dio_factory.dart';
 import '../data/model/resend_verification_request_body.dart';
+import '../data/model/reset_password_request_body.dart';
 import '../data/model/sign_up_request_body.dart';
 import '../data/model/login_request_body.dart';
 import '../data/model/logout_request_body.dart';
@@ -389,6 +390,30 @@ class AuthCubit extends Cubit<AuthState> {
       );
     } catch (e) {
       return _getFriendlyErrorMessage(e.toString(), 'reset');
+    }
+  }
+
+  Future<String> resetPassword(ResetPasswordRequestBody body) async {
+    try {
+      emit(AuthState.loading());
+      final result = await auth.resetPassword(body);
+      return result.when(
+        success: (response) {
+          emit(AuthState.initial());
+          return response.message ??
+              'Password reset successfully. You can now log in with your new password.';
+        },
+        failure: (error) {
+          final friendlyMessage =
+              _getFriendlyErrorMessage(error.apiErrorModel.message, 'reset');
+          emit(AuthState.error(friendlyMessage));
+          return friendlyMessage;
+        },
+      );
+    } catch (e) {
+      final friendlyMessage = _getFriendlyErrorMessage(e.toString(), 'reset');
+      emit(AuthState.error(friendlyMessage));
+      return friendlyMessage;
     }
   }
 

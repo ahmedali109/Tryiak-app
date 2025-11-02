@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import '../../../core/router/go_router.dart';
 import '../../../core/widgets/toast.dart';
@@ -135,7 +135,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         } else if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(state.message),
+              content:
+                  Text(state.message, style: TextStyle(color: Colors.white)),
               backgroundColor: Colors.red[600],
               behavior: SnackBarBehavior.floating,
               duration: const Duration(seconds: 4),
@@ -151,7 +152,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: theme.scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -176,13 +176,19 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   width: 80,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: theme.primaryColor.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        theme.primaryColor.withValues(alpha: 0.1),
+                        theme.primaryColor.withValues(alpha: 0.3),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
                   ),
                   child: Icon(
                     Icons.email_outlined,
                     size: 40,
-                    color: theme.primaryColor,
                   ),
                 ),
 
@@ -216,7 +222,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   widget.email,
                   style: theme.textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: theme.primaryColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -326,7 +331,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                       child: Text(
                         "resend".tr(),
                         style: TextStyle(
-                          color: theme.primaryColor,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
