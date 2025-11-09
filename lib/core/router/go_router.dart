@@ -53,7 +53,7 @@ class AppNavigation {
 
   // GoRouter configuration
   static final GoRouter router = GoRouter(
-    initialLocation: AppPath.splash,
+    initialLocation: AppPath.home,
     debugLogDiagnostics: true, // Enable for debugging deep links
     navigatorKey: _rootNavigatorKey,
     redirect: (context, state) {
@@ -143,8 +143,16 @@ class AppNavigation {
               GoRoute(
                 path: AppPath.search,
                 name: AppPathName.search,
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SearchScreen(),
+                builder: (BuildContext context, GoRouterState state) {
+                  // Support query params to focus or pre-fill the search field
+                  final autofocus =
+                      state.uri.queryParameters['autofocus'] == 'true';
+                  final initialQuery = state.uri.queryParameters['q'] ?? '';
+                  return SearchScreen(
+                    autofocus: autofocus,
+                    initialQuery: initialQuery,
+                  );
+                },
               ),
             ],
           ),

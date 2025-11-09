@@ -12,7 +12,6 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  int selectedIndex = 0;
   void _goBranch(int index) {
     widget.navigationShell.goBranch(
       index,
@@ -22,15 +21,17 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
+    // Keep the bottom bar selection in sync with the navigation shell's current index
+    final currentIndex = widget.navigationShell.currentIndex;
     return Scaffold(
       body: widget.navigationShell,
       bottomNavigationBar: CustomSalomonBottomBar(
-        selectedIndex: selectedIndex,
+        selectedIndex: currentIndex,
         onTabChange: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
+          // when user taps the bar, instruct navigation shell to switch branch
           _goBranch(index);
+          // rebuild so the bar reflects the change
+          setState(() {});
         },
       ),
     );
