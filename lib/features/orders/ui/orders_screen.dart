@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ReminderScreen extends StatelessWidget {
-  const ReminderScreen({super.key});
+class OrdersScreen extends StatelessWidget {
+  const OrdersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reminder Screen'),
+        title: const Text('Orders'),
       ),
       body: const Center(
-        child: Text('Welcome to the Reminder Screen!'),
+        child: Text('This is the Orders Screen'),
       ),
     );
   }

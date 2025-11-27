@@ -5,12 +5,10 @@ import '../../auth_gate.dart';
 import '../../features/animatedSplash/ui/splash_screen.dart';
 import '../../features/auth/ui/reset_password_page.dart';
 import '../../features/auth/ui/verify_email_screen.dart';
-import '../../features/cart/ui/cart_screen.dart';
 import '../../features/home/ui/home_screen.dart';
 import '../../features/onBoarding/onboarding_screen.dart';
 import '../../features/profile/ui/profile_screen.dart';
-import '../../features/reminder/ui/reminder_screen.dart';
-import '../../features/search/ui/search_screen.dart';
+import '../../features/orders/ui/orders_screen.dart';
 import 'wrapper.dart';
 
 class AppPath {
@@ -46,14 +44,12 @@ class AppNavigation {
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorHome = GlobalKey<NavigatorState>();
-  static final _shellNavigatorSearch = GlobalKey<NavigatorState>();
-  static final _shellNavigatorCart = GlobalKey<NavigatorState>();
-  static final _shellNavigatorReminders = GlobalKey<NavigatorState>();
+  static final _shellNavigatorOrders = GlobalKey<NavigatorState>();
   static final _shellNavigatorAccount = GlobalKey<NavigatorState>();
 
   // GoRouter configuration
   static final GoRouter router = GoRouter(
-    initialLocation: AppPath.onBoarding,
+    initialLocation: AppPath.splash,
     debugLogDiagnostics: true, // Enable for debugging deep links
     navigatorKey: _rootNavigatorKey,
     redirect: (context, state) {
@@ -138,47 +134,15 @@ class AppNavigation {
 
           /// Branch Search
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorSearch,
+            navigatorKey: _shellNavigatorOrders,
             routes: <RouteBase>[
               GoRoute(
                 path: AppPath.search,
                 name: AppPathName.search,
                 builder: (BuildContext context, GoRouterState state) {
                   // Support query params to focus or pre-fill the search field
-                  final autofocus =
-                      state.uri.queryParameters['autofocus'] == 'true';
-                  final initialQuery = state.uri.queryParameters['q'] ?? '';
-                  return SearchScreen(
-                    autofocus: autofocus,
-                    initialQuery: initialQuery,
-                  );
+                  return OrdersScreen();
                 },
-              ),
-            ],
-          ),
-
-          /// Branch Cart
-          StatefulShellBranch(
-            navigatorKey: _shellNavigatorCart,
-            routes: <RouteBase>[
-              GoRoute(
-                path: AppPath.cart,
-                name: AppPathName.cart,
-                builder: (BuildContext context, GoRouterState state) =>
-                    const CartScreen(),
-              ),
-            ],
-          ),
-
-          /// Branch Reminders
-          StatefulShellBranch(
-            navigatorKey: _shellNavigatorReminders,
-            routes: <RouteBase>[
-              GoRoute(
-                path: AppPath.reminders,
-                name: AppPathName.reminders,
-                builder: (BuildContext context, GoRouterState state) =>
-                    const ReminderScreen(),
               ),
             ],
           ),

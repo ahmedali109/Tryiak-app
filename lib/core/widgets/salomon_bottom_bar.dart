@@ -31,19 +31,9 @@ class CustomSalomonBottomBar extends StatelessWidget {
             selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.search),
-            title: Text("search_nav".tr()),
-            selectedColor: Colors.orange,
-          ),
-          SalomonBottomBarItem(
-            icon: _buildNotificationBadge(icon: Icons.shopping_cart),
-            title: Text("cart_nav".tr()),
+            icon: _buildNotificationBadge(icon: Icons.notifications),
+            title: Text("orders_nav".tr()),
             selectedColor: Colors.green,
-          ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.alarm),
-            title: Text("reminder_nav".tr()),
-            selectedColor: Colors.blue,
           ),
           SalomonBottomBarItem(
             icon: Icon(Icons.person),
