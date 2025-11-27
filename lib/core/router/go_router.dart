@@ -53,7 +53,7 @@ class AppNavigation {
 
   // GoRouter configuration
   static final GoRouter router = GoRouter(
-    initialLocation: AppPath.home,
+    initialLocation: AppPath.onBoarding,
     debugLogDiagnostics: true, // Enable for debugging deep links
     navigatorKey: _rootNavigatorKey,
     redirect: (context, state) {

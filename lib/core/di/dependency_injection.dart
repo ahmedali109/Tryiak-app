@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/auth/data/repo/auth.dart';
 import '../../features/auth/logic/auth_cubit.dart';
+import '../../features/location/logic/location_cubit.dart';
 import '../networking/api_constants.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
@@ -21,7 +22,8 @@ Future<void> setupDependencyInjection() async {
   di.registerLazySingleton<AuthCubit>(
       () => AuthCubit(auth: Authentication(di<ApiService>())));
   di.registerLazySingleton<NotificationCubit>(() => NotificationCubit());
-  final brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
+  di.registerLazySingleton<LocationCubit>(() => LocationCubit());
+  final brightness =
+      WidgetsBinding.instance.platformDispatcher.platformBrightness;
   di.registerLazySingleton<ThemeProvider>(() => ThemeProvider(brightness));
-
 }

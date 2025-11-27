@@ -47,6 +47,12 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to location when open to show nearby services.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>This app needs access to location when in the background to update your location and show nearby services.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>This app needs access to location when open and in the background to update your location and show nearby services.</string>
 		<key>CFBundleURLTypes</key>
 		<array>
 			<dict>

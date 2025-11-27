@@ -6,6 +6,7 @@ import 'core/router/go_router.dart';
 import 'core/widgets/loading_indicator.dart';
 import 'features/auth/logic/auth_cubit.dart';
 import 'features/auth/logic/auth_state.dart';
+import 'features/location/logic/location_cubit.dart';
 import 'features/auth/ui/login_or_register.dart';
 
 class AuthGate extends StatelessWidget {
@@ -23,6 +24,8 @@ class AuthGate extends StatelessWidget {
           });
         } else if (state is Authenticated) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            // Request location permission when user is authenticated
+            context.read<LocationCubit>().requestLocationPermission();
             context.go(AppPath.home);
           });
         }
