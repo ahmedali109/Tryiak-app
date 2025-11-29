@@ -10,12 +10,14 @@ MedicineModel _$MedicineModelFromJson(Map<String, dynamic> json) =>
     MedicineModel(
       name: json['name'] as String,
       imagePath: json['imagePath'] as String,
-      price: (json['price'] as num).toDouble(),
+      genericName: json['genericName'] as String?,
+      form: json['form'] as String?,
     );
 
 Map<String, dynamic> _$MedicineModelToJson(MedicineModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'imagePath': instance.imagePath,
-      'price': instance.price,
+      'genericName': instance.genericName,
+      'form': instance.form,
     };

@@ -20,10 +20,8 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> banners,
-            List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)
+    required TResult Function(List<String> banners,
+            List<Map<String, String>> categories, List<MedicineModel> medicines)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -35,7 +33,7 @@ mixin _$HomeState {
     TResult? Function(
             List<String> banners,
             List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult? Function(String message)? error,
   }) =>
@@ -45,7 +43,7 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> banners, List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -141,10 +139,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> banners,
-            List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)
+    required TResult Function(List<String> banners,
+            List<Map<String, String>> categories, List<MedicineModel> medicines)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -159,7 +155,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
             List<String> banners,
             List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -172,7 +168,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> banners, List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -268,10 +264,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> banners,
-            List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)
+    required TResult Function(List<String> banners,
+            List<Map<String, String>> categories, List<MedicineModel> medicines)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -286,7 +280,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(
             List<String> banners,
             List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -299,7 +293,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> banners, List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -361,7 +355,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   $Res call(
       {List<String> banners,
       List<Map<String, String>> categories,
-      List<Map<String, dynamic>> medicines});
+      List<MedicineModel> medicines});
 }
 
 /// @nodoc
@@ -393,7 +387,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       medicines: null == medicines
           ? _value._medicines
           : medicines // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
+              as List<MedicineModel>,
     ));
   }
 }
@@ -404,7 +398,7 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(
       {required final List<String> banners,
       required final List<Map<String, String>> categories,
-      required final List<Map<String, dynamic>> medicines})
+      required final List<MedicineModel> medicines})
       : _banners = banners,
         _categories = categories,
         _medicines = medicines;
@@ -425,9 +419,9 @@ class _$LoadedImpl implements _Loaded {
     return EqualUnmodifiableListView(_categories);
   }
 
-  final List<Map<String, dynamic>> _medicines;
+  final List<MedicineModel> _medicines;
   @override
-  List<Map<String, dynamic>> get medicines {
+  List<MedicineModel> get medicines {
     if (_medicines is EqualUnmodifiableListView) return _medicines;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_medicines);
@@ -470,10 +464,8 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> banners,
-            List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)
+    required TResult Function(List<String> banners,
+            List<Map<String, String>> categories, List<MedicineModel> medicines)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -488,7 +480,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(
             List<String> banners,
             List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -501,7 +493,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> banners, List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -554,11 +546,11 @@ abstract class _Loaded implements HomeState {
   const factory _Loaded(
       {required final List<String> banners,
       required final List<Map<String, String>> categories,
-      required final List<Map<String, dynamic>> medicines}) = _$LoadedImpl;
+      required final List<MedicineModel> medicines}) = _$LoadedImpl;
 
   List<String> get banners;
   List<Map<String, String>> get categories;
-  List<Map<String, dynamic>> get medicines;
+  List<MedicineModel> get medicines;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -637,10 +629,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> banners,
-            List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)
+    required TResult Function(List<String> banners,
+            List<Map<String, String>> categories, List<MedicineModel> medicines)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -655,7 +645,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(
             List<String> banners,
             List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -668,7 +658,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> banners, List<Map<String, String>> categories,
-            List<Map<String, dynamic>> medicines)?
+            List<MedicineModel> medicines)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),

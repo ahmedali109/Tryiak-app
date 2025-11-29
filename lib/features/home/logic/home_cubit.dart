@@ -5,7 +5,7 @@ import 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(const HomeState.initial());
 
-  List<Map<String, dynamic>> _allMedicines = [];
+  List<MedicineModel> _allMedicines = [];
   String _currentCategory = '';
   String _searchQuery = '';
 
@@ -16,15 +16,35 @@ class HomeCubit extends Cubit<HomeState> {
       // TODO: Replace with actual API calls later
       final medicines = [
         MedicineModel(
-            name: "Panadol", imagePath: "assets/med1.png", price: 5.5),
-        MedicineModel(name: "Brufen", imagePath: "assets/med1.png", price: 6.0),
+            name: "Panadol",
+            imagePath: "assets/med1.png",
+            genericName: "Paracetamol",
+            form: "Tablet • 500mg"),
         MedicineModel(
-            name: "Voltaren", imagePath: "assets/med1.png", price: 7.2),
-        MedicineModel(name: "Adol", imagePath: "assets/med1.png", price: 4.9),
+            name: "Brufen",
+            imagePath: "assets/med1.png",
+            genericName: "Ibuprofen",
+            form: "Tablet • 400mg"),
         MedicineModel(
-            name: "Cataflam", imagePath: "assets/med1.png", price: 6.5),
+            name: "Voltaren",
+            imagePath: "assets/med1.png",
+            genericName: "Diclofenac",
+            form: "Gel • 10g"),
         MedicineModel(
-            name: "Augmentin", imagePath: "assets/med1.png", price: 8.0),
+            name: "Adol",
+            imagePath: "assets/med1.png",
+            genericName: "Tramadol",
+            form: "Tablet • 50mg"),
+        MedicineModel(
+            name: "Cataflam",
+            imagePath: "assets/med1.png",
+            genericName: "Diclofenac",
+            form: "Tablet • 50mg"),
+        MedicineModel(
+            name: "Augmentin",
+            imagePath: "assets/med1.png",
+            genericName: "Amoxicillin + Clavulanic acid",
+            form: "Tablet • 625mg"),
       ];
 
       final banners = [
@@ -40,15 +60,8 @@ class HomeCubit extends Cubit<HomeState> {
         {"title": "Kitchen", "image": "assets/med1.png"},
       ];
 
-      _allMedicines = medicines
-          .map((m) => {
-                'name': m.name,
-                'image': m.imagePath,
-                'price': m.price,
-                'description': 'Sample description',
-                'category': 'General',
-              })
-          .toList();
+      // Keep as MedicineModel instances (carry additional fields)
+      _allMedicines = medicines;
 
       emit(HomeState.loaded(
         banners: banners,
@@ -73,23 +86,26 @@ class HomeCubit extends Cubit<HomeState> {
   void _filterMedicines() {
     state.maybeWhen(
       loaded: (banners, categories, medicines) {
-        var filteredMedicines = List<Map<String, dynamic>>.from(_allMedicines);
+        var filteredMedicines = List<MedicineModel>.from(_allMedicines);
 
-        // Apply category filter
+        // Apply category filter (if category field existed)
         if (_currentCategory.isNotEmpty) {
           filteredMedicines = filteredMedicines
               .where((m) =>
-                  m['category'].toLowerCase() == _currentCategory.toLowerCase())
+                  m.name.toLowerCase().contains(_currentCategory.toLowerCase()))
               .toList();
         }
 
-        // Apply search filter
+        // Apply search filter (search name, genericName or form)
         if (_searchQuery.isNotEmpty) {
-          filteredMedicines = filteredMedicines
-              .where((m) =>
-                  m['name'].toLowerCase().contains(_searchQuery) ||
-                  m['description'].toLowerCase().contains(_searchQuery))
-              .toList();
+          filteredMedicines = filteredMedicines.where((m) {
+            final q = _searchQuery;
+            final nameMatch = m.name.toLowerCase().contains(q);
+            final genericMatch =
+                (m.genericName ?? '').toLowerCase().contains(q);
+            final formMatch = (m.form ?? '').toLowerCase().contains(q);
+            return nameMatch || genericMatch || formMatch;
+          }).toList();
         }
 
         emit(HomeState.loaded(

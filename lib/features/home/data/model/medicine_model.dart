@@ -6,12 +6,14 @@ part 'medicine_model.g.dart';
 class MedicineModel {
   final String name;
   final String imagePath;
-  final double price;
+  final String? genericName;
+  final String? form;
 
   MedicineModel({
     required this.name,
     required this.imagePath,
-    required this.price,
+    this.genericName,
+    this.form,
   });
 
   factory MedicineModel.fromJson(Map<String, dynamic> json) =>

@@ -11,7 +11,7 @@ class HomeState with _$HomeState {
   const factory HomeState.loaded({
     required List<String> banners,
     required List<Map<String, String>> categories,
-    required List<Map<String, dynamic>> medicines,
+    required List<MedicineModel> medicines,
   }) = _Loaded;
   const factory HomeState.error(String message) = _Error;
 }
