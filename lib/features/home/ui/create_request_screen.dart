@@ -1,4 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:tryiak/features/location/ui/select_location_screen.dart';
 import 'package:tryiak/features/location/data/location_model.dart';
 import '../data/model/medicine_model.dart';
@@ -18,9 +21,99 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
   int _deliveryOptionIndex = 0;
   LocationModel? _selectedLocation;
 
+  // Prescription Image Picker
+  XFile? _prescriptionFile;
+  final ImagePicker _picker = ImagePicker();
+
+  final TextEditingController _noteController = TextEditingController();
+
   void _increment() => setState(() => _quantity++);
   void _decrement() {
     if (_quantity > 1) setState(() => _quantity--);
+  }
+
+  Future<void> _pickPrescription() async {
+    await showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) {
+        return SafeArea(
+          child: Wrap(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text("Take Photo"),
+                onTap: () async {
+                  Navigator.pop(context);
+
+                  // طلب صلاحيات الكاميرا
+                  var status = await Permission.camera.request();
+                  if (!status.isGranted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Camera permission denied")),
+                    );
+                    return;
+                  }
+
+                  final picked = await _picker.pickImage(
+                    source: ImageSource.camera,
+                    imageQuality: 80,
+                  );
+
+                  if (picked != null) {
+                    setState(() => _prescriptionFile = picked);
+                  }
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo),
+                title: const Text("Choose from Gallery"),
+                onTap: () async {
+                  Navigator.pop(context);
+
+                  var statusPhotos = await Permission.photos.request();
+                  if (!statusPhotos.isGranted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text("Gallery permission denied")),
+                    );
+                    return;
+                  }
+
+                  final picked = await _picker.pickImage(
+                    source: ImageSource.gallery,
+                    imageQuality: 80,
+                  );
+
+                  if (picked != null) {
+                    setState(() => _prescriptionFile = picked);
+                  }
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.close),
+                title: const Text("Cancel"),
+                onTap: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _removePrescription() {
+    setState(() {
+      _prescriptionFile = null;
+    });
+  }
+
+  @override
+  void dispose() {
+    _noteController.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,6 +134,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // ---------------- Medicine Card ----------------
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -55,24 +149,35 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: med.imagePath.isNotEmpty
-                        ? Image.asset(med.imagePath,
-                            height: 64, width: 64, fit: BoxFit.cover)
+                        ? Image.asset(
+                            med.imagePath,
+                            height: 64,
+                            width: 64,
+                            fit: BoxFit.cover,
+                          )
                         : Container(
-                            height: 64, width: 64, color: Colors.grey[200]),
+                            height: 64,
+                            width: 64,
+                            color: Colors.grey[200],
+                          ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(med.name,
-                            style: theme.textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600)),
+                        Text(
+                          med.name,
+                          style: theme.textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
                         const SizedBox(height: 4),
                         if ((med.genericName ?? '').isNotEmpty)
-                          Text(med.genericName!,
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(color: Colors.grey[700])),
+                          Text(
+                            med.genericName!,
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey[700]),
+                          ),
                         const SizedBox(height: 8),
                         Row(
                           children: [
@@ -80,22 +185,28 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 6, horizontal: 10),
                               decoration: BoxDecoration(
-                                  color: Colors.blue.shade50,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Text(med.form ?? '-',
-                                  style: theme.textTheme.bodySmall
-                                      ?.copyWith(color: Colors.blue[700])),
+                                color: Colors.blue.shade50,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                med.form ?? '-',
+                                style: theme.textTheme.bodySmall
+                                    ?.copyWith(color: Colors.blue[700]),
+                              ),
                             ),
                             const SizedBox(width: 8),
                             Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 6, horizontal: 10),
                               decoration: BoxDecoration(
-                                  color: Colors.green.shade50,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Text(med.form ?? '-',
-                                  style: theme.textTheme.bodySmall
-                                      ?.copyWith(color: Colors.green[700])),
+                                color: Colors.green.shade50,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                med.form ?? '-',
+                                style: theme.textTheme.bodySmall
+                                    ?.copyWith(color: Colors.green[700]),
+                              ),
                             ),
                           ],
                         )
@@ -108,28 +219,31 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
             const SizedBox(height: 18),
 
-            // Quantity
+            // ---------------- Quantity ----------------
             Text('Quantity',
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
+
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
+                ],
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
                     onTap: _decrement,
                     child: CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.grey.shade100,
-                        child: const Icon(Icons.remove, color: Colors.black)),
+                      radius: 20,
+                      backgroundColor: Colors.grey.shade100,
+                      child: const Icon(Icons.remove, color: Colors.black),
+                    ),
                   ),
                   const SizedBox(width: 24),
                   Text('$_quantity', style: theme.textTheme.titleMedium),
@@ -137,9 +251,10 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                   GestureDetector(
                     onTap: _increment,
                     child: CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.blue,
-                        child: const Icon(Icons.add, color: Colors.white)),
+                      radius: 20,
+                      backgroundColor: Colors.blue,
+                      child: const Icon(Icons.add, color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -147,11 +262,12 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
             const SizedBox(height: 18),
 
-            // Delivery options
+            // ---------------- Delivery Option ----------------
             Text('Delivery Option',
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
+
             Row(
               children: [
                 Expanded(
@@ -164,23 +280,27 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             ? Colors.blue.shade50
                             : Colors.white,
                         border: Border.all(
-                            color: _deliveryOptionIndex == 0
-                                ? Colors.blue
-                                : Colors.grey.shade200),
+                          color: _deliveryOptionIndex == 0
+                              ? Colors.blue
+                              : Colors.grey.shade200,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Delivery',
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: _deliveryOptionIndex == 0
-                                      ? Colors.blue
-                                      : Colors.grey[700])),
-                          const SizedBox(height: 6),
-                          Text('To your address',
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(color: Colors.grey[600])),
+                          Text(
+                            'Delivery',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: _deliveryOptionIndex == 0
+                                  ? Colors.blue
+                                  : Colors.black,
+                            ),
+                          ),
+                          Text(
+                            'To your address',
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey[600]),
+                          ),
                         ],
                       ),
                     ),
@@ -193,27 +313,28 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: _deliveryOptionIndex == 1
-                            ? Colors.white
-                            : Colors.white,
                         border: Border.all(
-                            color: _deliveryOptionIndex == 1
-                                ? Colors.blue
-                                : Colors.grey.shade200),
+                          color: _deliveryOptionIndex == 1
+                              ? Colors.blue
+                              : Colors.grey.shade200,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Pickup',
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: _deliveryOptionIndex == 1
-                                      ? Colors.blue
-                                      : Colors.grey[700])),
-                          const SizedBox(height: 6),
-                          Text('From pharmacy',
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(color: Colors.grey[600])),
+                          Text(
+                            'Pickup',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: _deliveryOptionIndex == 1
+                                  ? Colors.blue
+                                  : Colors.black,
+                            ),
+                          ),
+                          Text(
+                            'From pharmacy',
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey[600]),
+                          ),
                         ],
                       ),
                     ),
@@ -224,37 +345,41 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
             const SizedBox(height: 18),
 
-            Text('Delivery Address',
-                style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 8),
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
+            // ---------------- Address if Delivery ----------------
+            if (_deliveryOptionIndex == 0) ...[
+              Text('Delivery Address',
+                  style: theme.textTheme.bodyLarge
+                      ?.copyWith(fontWeight: FontWeight.w600)),
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                  ]),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.location_on_outlined,
-                          size: 18, color: Colors.grey),
-                      const SizedBox(width: 8),
-                      Expanded(
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.location_on_outlined,
+                            size: 18, color: Colors.grey),
+                        const SizedBox(width: 8),
+                        Expanded(
                           child: Text(
-                              _selectedLocation?.address ??
-                                  '123 Main Street, Cairo, Egypt',
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(color: Colors.grey[700]))),
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
+                            _selectedLocation?.address ??
+                                '123 Main Street, Cairo, Egypt',
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(color: Colors.grey[700]),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    ElevatedButton(
                       onPressed: () async {
                         final result =
                             await Navigator.of(context).push<LocationModel?>(
@@ -266,6 +391,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             ),
                           ),
                         );
+
                         if (result != null) {
                           setState(() {
                             _selectedLocation = result;
@@ -282,36 +408,140 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                       ),
                       child: const Text('Choose on Map'),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              const SizedBox(height: 18),
+            ],
+
+            // ---------------- Note to Pharmacy ----------------
+            Text('Note to Pharmacy (Optional)',
+                style: theme.textTheme.bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey.shade300),
+              ),
+              child: TextField(
+                controller: _noteController,
+                maxLines: 3,
+                decoration: const InputDecoration(
+                  hintText: 'Any special instructions...',
+                  border: InputBorder.none,
+                  isDense: true,
+                ),
               ),
             ),
 
             const SizedBox(height: 18),
+
+            // ---------------- Prescription Upload ----------------
+            Text('Prescription (Optional)',
+                style: theme.textTheme.bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+
+            Stack(
+              children: [
+                GestureDetector(
+                  onTap: _pickPrescription,
+                  child: Container(
+                    height: 140,
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: _prescriptionFile == null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.upload_file, color: Colors.grey[600]),
+                              const SizedBox(height: 6),
+                              Text("Upload Prescription",
+                                  style: TextStyle(color: Colors.grey[700])),
+                            ],
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.file(
+                              File(_prescriptionFile!.path),
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                          ),
+                  ),
+                ),
+
+                // زرار حذف الصورة
+                if (_prescriptionFile != null)
+                  Positioned(
+                    right: 8,
+                    top: 8,
+                    child: GestureRecognizerWidget(
+                      onTap: _removePrescription,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white70,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.all(6),
+                        child: const Icon(Icons.close, size: 18),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+
+            const SizedBox(height: 25),
           ],
         ),
       ),
       bottomNavigationBar: SafeArea(
         minimum: const EdgeInsets.all(12),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: SizedBox(
-            height: 48,
-            child: ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Request sent (placeholder)')));
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF75DDFA),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
+        child: SizedBox(
+          height: 48,
+          child: ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Request sent (placeholder)'),
+                ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF75DDFA),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: const Text('Send Request to Nearby Pharmacies'),
             ),
+            child: const Text('Send Request to Nearby Pharmacies'),
           ),
         ),
       ),
     );
+  }
+}
+
+class GestureRecognizerWidget extends StatelessWidget {
+  final VoidCallback onTap;
+  final Widget child;
+
+  const GestureRecognizerWidget({
+    super.key,
+    required this.onTap,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(onTap: onTap, child: child);
   }
 }
