@@ -4,7 +4,7 @@ import 'package:tryiak/features/location/logic/location_cubit.dart';
 import 'package:tryiak/features/location/logic/location_state.dart';
 
 class LocationBarWidget extends StatelessWidget {
-  const LocationBarWidget({Key? key}) : super(key: key);
+  const LocationBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

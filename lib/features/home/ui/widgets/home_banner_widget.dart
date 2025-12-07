@@ -4,9 +4,9 @@ class HomeBannerWidget extends StatefulWidget {
   final List<String> banners;
 
   const HomeBannerWidget({
-    Key? key,
+    super.key,
     required this.banners,
-  }) : super(key: key);
+  });
 
   @override
   State<HomeBannerWidget> createState() => _HomeBannerWidgetState();
@@ -34,7 +34,7 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
 
     return Column(
       children: [
-        Container(
+        SizedBox(
           height: imageHeight,
           width: screenWidth,
           child: ClipRRect(

@@ -6,8 +6,7 @@ import '../data/model/medicine_model.dart';
 class CreateRequestScreen extends StatefulWidget {
   final MedicineModel medicine;
 
-  const CreateRequestScreen({Key? key, required this.medicine})
-      : super(key: key);
+  const CreateRequestScreen({super.key, required this.medicine});
 
   @override
   State<CreateRequestScreen> createState() => _CreateRequestScreenState();

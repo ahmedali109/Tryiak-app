@@ -157,9 +157,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -176,9 +173,6 @@ class __$$AuthInitialImplCopyWithImpl<$Res>
   __$$AuthInitialImplCopyWithImpl(
       _$AuthInitialImpl _value, $Res Function(_$AuthInitialImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -367,9 +361,6 @@ class __$$AuthLoadingImplCopyWithImpl<$Res>
   __$$AuthLoadingImplCopyWithImpl(
       _$AuthLoadingImpl _value, $Res Function(_$AuthLoadingImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -561,8 +552,6 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
       _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -601,9 +590,7 @@ class _$AuthenticatedImpl implements Authenticated {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
@@ -762,10 +749,7 @@ abstract class Authenticated implements AuthState {
   const factory Authenticated(final AppUser user) = _$AuthenticatedImpl;
 
   AppUser get user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -784,9 +768,6 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -980,8 +961,6 @@ class __$$EmailVerificationPendingImplCopyWithImpl<$Res>
       $Res Function(_$EmailVerificationPendingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1020,9 +999,7 @@ class _$EmailVerificationPendingImpl implements EmailVerificationPending {
   @override
   int get hashCode => Object.hash(runtimeType, email);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$EmailVerificationPendingImplCopyWith<_$EmailVerificationPendingImpl>
@@ -1183,10 +1160,7 @@ abstract class EmailVerificationPending implements AuthState {
       _$EmailVerificationPendingImpl;
 
   String get email;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$EmailVerificationPendingImplCopyWith<_$EmailVerificationPendingImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1208,8 +1182,6 @@ class __$$AuthErrorImplCopyWithImpl<$Res>
       _$AuthErrorImpl _value, $Res Function(_$AuthErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1248,9 +1220,7 @@ class _$AuthErrorImpl implements AuthError {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
@@ -1409,10 +1379,7 @@ abstract class AuthError implements AuthState {
   const factory AuthError(final String message) = _$AuthErrorImpl;
 
   String get message;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1433,9 +1400,6 @@ class __$$RegisterPasswordObsecureImplCopyWithImpl<$Res>
       _$RegisterPasswordObsecureImpl _value,
       $Res Function(_$RegisterPasswordObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1627,9 +1591,6 @@ class __$$RegisterPasswordNotObsecureImplCopyWithImpl<$Res>
       _$RegisterPasswordNotObsecureImpl _value,
       $Res Function(_$RegisterPasswordNotObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1823,9 +1784,6 @@ class __$$RegisterPasswordConfirmationObsecureImplCopyWithImpl<$Res>
       _$RegisterPasswordConfirmationObsecureImpl _value,
       $Res Function(_$RegisterPasswordConfirmationObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2020,9 +1978,6 @@ class __$$RegisterPasswordConfirmationNotObsecureImplCopyWithImpl<$Res>
       _$RegisterPasswordConfirmationNotObsecureImpl _value,
       $Res Function(_$RegisterPasswordConfirmationNotObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2215,9 +2170,6 @@ class __$$LoginPasswordObsecureImplCopyWithImpl<$Res>
   __$$LoginPasswordObsecureImplCopyWithImpl(_$LoginPasswordObsecureImpl _value,
       $Res Function(_$LoginPasswordObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2409,9 +2361,6 @@ class __$$LoginPasswordNotObsecureImplCopyWithImpl<$Res>
       _$LoginPasswordNotObsecureImpl _value,
       $Res Function(_$LoginPasswordNotObsecureImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2611,8 +2560,6 @@ class __$$PasswordValidationsStateImplCopyWithImpl<$Res>
       $Res Function(_$PasswordValidationsStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2694,9 +2641,7 @@ class _$PasswordValidationsStateImpl implements PasswordValidationsState {
   int get hashCode => Object.hash(runtimeType, hasLowercase, hasUppercase,
       hasSpecialCharacters, hasNumber, hasMinLength);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
@@ -2868,10 +2813,7 @@ abstract class PasswordValidationsState implements AuthState {
   bool get hasSpecialCharacters;
   bool get hasNumber;
   bool get hasMinLength;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

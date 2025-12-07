@@ -7,12 +7,12 @@ class SearchBarWidget extends StatelessWidget {
   final bool inHeader;
 
   const SearchBarWidget({
-    Key? key,
+    super.key,
     required this.searchController,
     required this.onSearch,
     this.onTap,
     this.inHeader = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
