@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,114 +9,71 @@ part of 'auth_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthState {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AuthState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AuthState()';
-  }
-}
-
-/// @nodoc
-class $AuthStateCopyWith<$Res> {
-  $AuthStateCopyWith(AuthState _, $Res Function(AuthState) __);
-}
-
-/// Adds pattern-matching-related methods to [AuthState].
-extension AuthStatePatterns on AuthState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthInitial value)? initial,
-    TResult Function(AuthLoading value)? loading,
-    TResult Function(Authenticated value)? authenticated,
-    TResult Function(Unauthenticated value)? unauthenticated,
-    TResult Function(EmailVerificationPending value)? emailVerificationPending,
-    TResult Function(AuthError value)? error,
-    TResult Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
-    TResult Function(RegisterPasswordNotObsecure value)?
-        registerPasswordNotObsecure,
-    TResult Function(RegisterPasswordConfirmationObsecure value)?
-        registerPasswordConfirmationObsecure,
-    TResult Function(RegisterPasswordConfirmationNotObsecure value)?
-        registerPasswordConfirmationNotObsecure,
-    TResult Function(LoginPasswordObsecure value)? loginPasswordObsecure,
-    TResult Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
-    TResult Function(PasswordValidationsState value)? passwordValidations,
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String email) emailVerificationPending,
+    required TResult Function(String message) error,
+    required TResult Function() registerPasswordObsecure,
+    required TResult Function() registerPasswordNotObsecure,
+    required TResult Function() registerPasswordConfirmationObsecure,
+    required TResult Function() registerPasswordConfirmationNotObsecure,
+    required TResult Function() loginPasswordObsecure,
+    required TResult Function() loginPasswordNotObsecure,
+    required TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
+        passwordValidations,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String email)? emailVerificationPending,
+    TResult? Function(String message)? error,
+    TResult? Function()? registerPasswordObsecure,
+    TResult? Function()? registerPasswordNotObsecure,
+    TResult? Function()? registerPasswordConfirmationObsecure,
+    TResult? Function()? registerPasswordConfirmationNotObsecure,
+    TResult? Function()? loginPasswordObsecure,
+    TResult? Function()? loginPasswordNotObsecure,
+    TResult? Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String email)? emailVerificationPending,
+    TResult Function(String message)? error,
+    TResult Function()? registerPasswordObsecure,
+    TResult Function()? registerPasswordNotObsecure,
+    TResult Function()? registerPasswordConfirmationObsecure,
+    TResult Function()? registerPasswordConfirmationNotObsecure,
+    TResult Function()? loginPasswordObsecure,
+    TResult Function()? loginPasswordNotObsecure,
+    TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
     required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial() when initial != null:
-        return initial(_that);
-      case AuthLoading() when loading != null:
-        return loading(_that);
-      case Authenticated() when authenticated != null:
-        return authenticated(_that);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated(_that);
-      case EmailVerificationPending() when emailVerificationPending != null:
-        return emailVerificationPending(_that);
-      case AuthError() when error != null:
-        return error(_that);
-      case RegisterPasswordObsecure() when registerPasswordObsecure != null:
-        return registerPasswordObsecure(_that);
-      case RegisterPasswordNotObsecure()
-          when registerPasswordNotObsecure != null:
-        return registerPasswordNotObsecure(_that);
-      case RegisterPasswordConfirmationObsecure()
-          when registerPasswordConfirmationObsecure != null:
-        return registerPasswordConfirmationObsecure(_that);
-      case RegisterPasswordConfirmationNotObsecure()
-          when registerPasswordConfirmationNotObsecure != null:
-        return registerPasswordConfirmationNotObsecure(_that);
-      case LoginPasswordObsecure() when loginPasswordObsecure != null:
-        return loginPasswordObsecure(_that);
-      case LoginPasswordNotObsecure() when loginPasswordNotObsecure != null:
-        return loginPasswordNotObsecure(_that);
-      case PasswordValidationsState() when passwordValidations != null:
-        return passwordValidations(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthInitial value) initial,
@@ -140,52 +97,8 @@ extension AuthStatePatterns on AuthState {
         loginPasswordNotObsecure,
     required TResult Function(PasswordValidationsState value)
         passwordValidations,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial():
-        return initial(_that);
-      case AuthLoading():
-        return loading(_that);
-      case Authenticated():
-        return authenticated(_that);
-      case Unauthenticated():
-        return unauthenticated(_that);
-      case EmailVerificationPending():
-        return emailVerificationPending(_that);
-      case AuthError():
-        return error(_that);
-      case RegisterPasswordObsecure():
-        return registerPasswordObsecure(_that);
-      case RegisterPasswordNotObsecure():
-        return registerPasswordNotObsecure(_that);
-      case RegisterPasswordConfirmationObsecure():
-        return registerPasswordConfirmationObsecure(_that);
-      case RegisterPasswordConfirmationNotObsecure():
-        return registerPasswordConfirmationNotObsecure(_that);
-      case LoginPasswordObsecure():
-        return loginPasswordObsecure(_that);
-      case LoginPasswordNotObsecure():
-        return loginPasswordNotObsecure(_that);
-      case PasswordValidationsState():
-        return passwordValidations(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AuthInitial value)? initial,
@@ -204,244 +117,42 @@ extension AuthStatePatterns on AuthState {
     TResult? Function(LoginPasswordObsecure value)? loginPasswordObsecure,
     TResult? Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
     TResult? Function(PasswordValidationsState value)? passwordValidations,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial() when initial != null:
-        return initial(_that);
-      case AuthLoading() when loading != null:
-        return loading(_that);
-      case Authenticated() when authenticated != null:
-        return authenticated(_that);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated(_that);
-      case EmailVerificationPending() when emailVerificationPending != null:
-        return emailVerificationPending(_that);
-      case AuthError() when error != null:
-        return error(_that);
-      case RegisterPasswordObsecure() when registerPasswordObsecure != null:
-        return registerPasswordObsecure(_that);
-      case RegisterPasswordNotObsecure()
-          when registerPasswordNotObsecure != null:
-        return registerPasswordNotObsecure(_that);
-      case RegisterPasswordConfirmationObsecure()
-          when registerPasswordConfirmationObsecure != null:
-        return registerPasswordConfirmationObsecure(_that);
-      case RegisterPasswordConfirmationNotObsecure()
-          when registerPasswordConfirmationNotObsecure != null:
-        return registerPasswordConfirmationNotObsecure(_that);
-      case LoginPasswordObsecure() when loginPasswordObsecure != null:
-        return loginPasswordObsecure(_that);
-      case LoginPasswordNotObsecure() when loginPasswordNotObsecure != null:
-        return loginPasswordNotObsecure(_that);
-      case PasswordValidationsState() when passwordValidations != null:
-        return passwordValidations(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(AppUser user)? authenticated,
-    TResult Function()? unauthenticated,
-    TResult Function(String email)? emailVerificationPending,
-    TResult Function(String message)? error,
-    TResult Function()? registerPasswordObsecure,
-    TResult Function()? registerPasswordNotObsecure,
-    TResult Function()? registerPasswordConfirmationObsecure,
-    TResult Function()? registerPasswordConfirmationNotObsecure,
-    TResult Function()? loginPasswordObsecure,
-    TResult Function()? loginPasswordNotObsecure,
-    TResult Function(bool hasLowercase, bool hasUppercase,
-            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
-        passwordValidations,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthInitial value)? initial,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult Function(AuthError value)? error,
+    TResult Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult Function(PasswordValidationsState value)? passwordValidations,
     required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial() when initial != null:
-        return initial();
-      case AuthLoading() when loading != null:
-        return loading();
-      case Authenticated() when authenticated != null:
-        return authenticated(_that.user);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated();
-      case EmailVerificationPending() when emailVerificationPending != null:
-        return emailVerificationPending(_that.email);
-      case AuthError() when error != null:
-        return error(_that.message);
-      case RegisterPasswordObsecure() when registerPasswordObsecure != null:
-        return registerPasswordObsecure();
-      case RegisterPasswordNotObsecure()
-          when registerPasswordNotObsecure != null:
-        return registerPasswordNotObsecure();
-      case RegisterPasswordConfirmationObsecure()
-          when registerPasswordConfirmationObsecure != null:
-        return registerPasswordConfirmationObsecure();
-      case RegisterPasswordConfirmationNotObsecure()
-          when registerPasswordConfirmationNotObsecure != null:
-        return registerPasswordConfirmationNotObsecure();
-      case LoginPasswordObsecure() when loginPasswordObsecure != null:
-        return loginPasswordObsecure();
-      case LoginPasswordNotObsecure() when loginPasswordNotObsecure != null:
-        return loginPasswordNotObsecure();
-      case PasswordValidationsState() when passwordValidations != null:
-        return passwordValidations(_that.hasLowercase, _that.hasUppercase,
-            _that.hasSpecialCharacters, _that.hasNumber, _that.hasMinLength);
-      case _:
-        return orElse();
-    }
-  }
+  }) =>
+      throw _privateConstructorUsedError;
+}
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
+/// @nodoc
+abstract class $AuthStateCopyWith<$Res> {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
+}
 
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(AppUser user) authenticated,
-    required TResult Function() unauthenticated,
-    required TResult Function(String email) emailVerificationPending,
-    required TResult Function(String message) error,
-    required TResult Function() registerPasswordObsecure,
-    required TResult Function() registerPasswordNotObsecure,
-    required TResult Function() registerPasswordConfirmationObsecure,
-    required TResult Function() registerPasswordConfirmationNotObsecure,
-    required TResult Function() loginPasswordObsecure,
-    required TResult Function() loginPasswordNotObsecure,
-    required TResult Function(bool hasLowercase, bool hasUppercase,
-            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
-        passwordValidations,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial():
-        return initial();
-      case AuthLoading():
-        return loading();
-      case Authenticated():
-        return authenticated(_that.user);
-      case Unauthenticated():
-        return unauthenticated();
-      case EmailVerificationPending():
-        return emailVerificationPending(_that.email);
-      case AuthError():
-        return error(_that.message);
-      case RegisterPasswordObsecure():
-        return registerPasswordObsecure();
-      case RegisterPasswordNotObsecure():
-        return registerPasswordNotObsecure();
-      case RegisterPasswordConfirmationObsecure():
-        return registerPasswordConfirmationObsecure();
-      case RegisterPasswordConfirmationNotObsecure():
-        return registerPasswordConfirmationNotObsecure();
-      case LoginPasswordObsecure():
-        return loginPasswordObsecure();
-      case LoginPasswordNotObsecure():
-        return loginPasswordNotObsecure();
-      case PasswordValidationsState():
-        return passwordValidations(_that.hasLowercase, _that.hasUppercase,
-            _that.hasSpecialCharacters, _that.hasNumber, _that.hasMinLength);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
+/// @nodoc
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
-<<<<<<< HEAD
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(AppUser user)? authenticated,
-    TResult? Function()? unauthenticated,
-    TResult? Function(String email)? emailVerificationPending,
-    TResult? Function(String message)? error,
-    TResult? Function()? registerPasswordObsecure,
-    TResult? Function()? registerPasswordNotObsecure,
-    TResult? Function()? registerPasswordConfirmationObsecure,
-    TResult? Function()? registerPasswordConfirmationNotObsecure,
-    TResult? Function()? loginPasswordObsecure,
-    TResult? Function()? loginPasswordNotObsecure,
-    TResult? Function(bool hasLowercase, bool hasUppercase,
-            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
-        passwordValidations,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case AuthInitial() when initial != null:
-        return initial();
-      case AuthLoading() when loading != null:
-        return loading();
-      case Authenticated() when authenticated != null:
-        return authenticated(_that.user);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated();
-      case EmailVerificationPending() when emailVerificationPending != null:
-        return emailVerificationPending(_that.email);
-      case AuthError() when error != null:
-        return error(_that.message);
-      case RegisterPasswordObsecure() when registerPasswordObsecure != null:
-        return registerPasswordObsecure();
-      case RegisterPasswordNotObsecure()
-          when registerPasswordNotObsecure != null:
-        return registerPasswordNotObsecure();
-      case RegisterPasswordConfirmationObsecure()
-          when registerPasswordConfirmationObsecure != null:
-        return registerPasswordConfirmationObsecure();
-      case RegisterPasswordConfirmationNotObsecure()
-          when registerPasswordConfirmationNotObsecure != null:
-        return registerPasswordConfirmationNotObsecure();
-      case LoginPasswordObsecure() when loginPasswordObsecure != null:
-        return loginPasswordObsecure();
-      case LoginPasswordNotObsecure() when loginPasswordNotObsecure != null:
-        return loginPasswordNotObsecure();
-      case PasswordValidationsState() when passwordValidations != null:
-        return passwordValidations(_that.hasLowercase, _that.hasUppercase,
-            _that.hasSpecialCharacters, _that.hasNumber, _that.hasMinLength);
-      case _:
-        return null;
-    }
-  }
-=======
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
@@ -462,46 +173,28 @@ class __$$AuthInitialImplCopyWithImpl<$Res>
   __$$AuthInitialImplCopyWithImpl(
       _$AuthInitialImpl _value, $Res Function(_$AuthInitialImpl) _then)
       : super(_value, _then);
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
 }
 
 /// @nodoc
 
-class AuthInitial implements AuthState {
-  const AuthInitial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AuthInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$AuthInitialImpl implements AuthInitial {
+  const _$AuthInitialImpl();
 
   @override
   String toString() {
     return 'AuthState.initial()';
   }
-}
-
-/// @nodoc
-
-class AuthLoading implements AuthState {
-  const AuthLoading();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AuthLoading);
+        (other.runtimeType == runtimeType && other is _$AuthInitialImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -676,68 +369,197 @@ class _$AuthLoadingImpl implements AuthLoading {
   const _$AuthLoadingImpl();
 
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   String toString() {
     return 'AuthState.loading()';
   }
-}
-
-/// @nodoc
-
-class Authenticated implements AuthState {
-  const Authenticated(this.user);
-
-  final AppUser user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Authenticated &&
-            (identical(other.user, user) || other.user == user));
+        (other.runtimeType == runtimeType && other is _$AuthLoadingImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'AuthState.authenticated(user: $user)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String email) emailVerificationPending,
+    required TResult Function(String message) error,
+    required TResult Function() registerPasswordObsecure,
+    required TResult Function() registerPasswordNotObsecure,
+    required TResult Function() registerPasswordConfirmationObsecure,
+    required TResult Function() registerPasswordConfirmationNotObsecure,
+    required TResult Function() loginPasswordObsecure,
+    required TResult Function() loginPasswordNotObsecure,
+    required TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
+        passwordValidations,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String email)? emailVerificationPending,
+    TResult? Function(String message)? error,
+    TResult? Function()? registerPasswordObsecure,
+    TResult? Function()? registerPasswordNotObsecure,
+    TResult? Function()? registerPasswordConfirmationObsecure,
+    TResult? Function()? registerPasswordConfirmationNotObsecure,
+    TResult? Function()? loginPasswordObsecure,
+    TResult? Function()? loginPasswordNotObsecure,
+    TResult? Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String email)? emailVerificationPending,
+    TResult Function(String message)? error,
+    TResult Function()? registerPasswordObsecure,
+    TResult Function()? registerPasswordNotObsecure,
+    TResult Function()? registerPasswordConfirmationObsecure,
+    TResult Function()? registerPasswordConfirmationNotObsecure,
+    TResult Function()? loginPasswordObsecure,
+    TResult Function()? loginPasswordNotObsecure,
+    TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthInitial value) initial,
+    required TResult Function(AuthLoading value) loading,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(EmailVerificationPending value)
+        emailVerificationPending,
+    required TResult Function(AuthError value) error,
+    required TResult Function(RegisterPasswordObsecure value)
+        registerPasswordObsecure,
+    required TResult Function(RegisterPasswordNotObsecure value)
+        registerPasswordNotObsecure,
+    required TResult Function(RegisterPasswordConfirmationObsecure value)
+        registerPasswordConfirmationObsecure,
+    required TResult Function(RegisterPasswordConfirmationNotObsecure value)
+        registerPasswordConfirmationNotObsecure,
+    required TResult Function(LoginPasswordObsecure value)
+        loginPasswordObsecure,
+    required TResult Function(LoginPasswordNotObsecure value)
+        loginPasswordNotObsecure,
+    required TResult Function(PasswordValidationsState value)
+        passwordValidations,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthInitial value)? initial,
+    TResult? Function(AuthLoading value)? loading,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult? Function(AuthError value)? error,
+    TResult? Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult? Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult? Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult? Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult? Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult? Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult? Function(PasswordValidationsState value)? passwordValidations,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthInitial value)? initial,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult Function(AuthError value)? error,
+    TResult Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult Function(PasswordValidationsState value)? passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
   }
 }
 
+abstract class AuthLoading implements AuthState {
+  const factory AuthLoading() = _$AuthLoadingImpl;
+}
+
 /// @nodoc
-abstract mixin class $AuthenticatedCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory $AuthenticatedCopyWith(
-          Authenticated value, $Res Function(Authenticated) _then) =
-      _$AuthenticatedCopyWithImpl;
+abstract class _$$AuthenticatedImplCopyWith<$Res> {
+  factory _$$AuthenticatedImplCopyWith(
+          _$AuthenticatedImpl value, $Res Function(_$AuthenticatedImpl) then) =
+      __$$AuthenticatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AppUser user});
 }
 
 /// @nodoc
-class _$AuthenticatedCopyWithImpl<$Res>
-    implements $AuthenticatedCopyWith<$Res> {
-  _$AuthenticatedCopyWithImpl(this._self, this._then);
-
-  final Authenticated _self;
-  final $Res Function(Authenticated) _then;
+class __$$AuthenticatedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedImpl>
+    implements _$$AuthenticatedImplCopyWith<$Res> {
+  __$$AuthenticatedImplCopyWithImpl(
+      _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? user = null,
   }) {
-    return _then(Authenticated(
+    return _then(_$AuthenticatedImpl(
       null == user
-          ? _self.user
+          ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AppUser,
     ));
@@ -746,15 +568,20 @@ class _$AuthenticatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class Unauthenticated implements AuthState {
-  const Unauthenticated();
+class _$AuthenticatedImpl implements Authenticated {
+  const _$AuthenticatedImpl(this.user);
+
+  @override
+  final AppUser user;
+
+  @override
+  String toString() {
+    return 'AuthState.authenticated(user: $user)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-<<<<<<< HEAD
-        (other.runtimeType == runtimeType && other is Unauthenticated);
-=======
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedImpl &&
             (identical(other.user, user) || other.user == user));
@@ -957,75 +784,191 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UnauthenticatedImpl);
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'AuthState.unauthenticated()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String email) emailVerificationPending,
+    required TResult Function(String message) error,
+    required TResult Function() registerPasswordObsecure,
+    required TResult Function() registerPasswordNotObsecure,
+    required TResult Function() registerPasswordConfirmationObsecure,
+    required TResult Function() registerPasswordConfirmationNotObsecure,
+    required TResult Function() loginPasswordObsecure,
+    required TResult Function() loginPasswordNotObsecure,
+    required TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
+        passwordValidations,
+  }) {
+    return unauthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String email)? emailVerificationPending,
+    TResult? Function(String message)? error,
+    TResult? Function()? registerPasswordObsecure,
+    TResult? Function()? registerPasswordNotObsecure,
+    TResult? Function()? registerPasswordConfirmationObsecure,
+    TResult? Function()? registerPasswordConfirmationNotObsecure,
+    TResult? Function()? loginPasswordObsecure,
+    TResult? Function()? loginPasswordNotObsecure,
+    TResult? Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+  }) {
+    return unauthenticated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String email)? emailVerificationPending,
+    TResult Function(String message)? error,
+    TResult Function()? registerPasswordObsecure,
+    TResult Function()? registerPasswordNotObsecure,
+    TResult Function()? registerPasswordConfirmationObsecure,
+    TResult Function()? registerPasswordConfirmationNotObsecure,
+    TResult Function()? loginPasswordObsecure,
+    TResult Function()? loginPasswordNotObsecure,
+    TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthInitial value) initial,
+    required TResult Function(AuthLoading value) loading,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(EmailVerificationPending value)
+        emailVerificationPending,
+    required TResult Function(AuthError value) error,
+    required TResult Function(RegisterPasswordObsecure value)
+        registerPasswordObsecure,
+    required TResult Function(RegisterPasswordNotObsecure value)
+        registerPasswordNotObsecure,
+    required TResult Function(RegisterPasswordConfirmationObsecure value)
+        registerPasswordConfirmationObsecure,
+    required TResult Function(RegisterPasswordConfirmationNotObsecure value)
+        registerPasswordConfirmationNotObsecure,
+    required TResult Function(LoginPasswordObsecure value)
+        loginPasswordObsecure,
+    required TResult Function(LoginPasswordNotObsecure value)
+        loginPasswordNotObsecure,
+    required TResult Function(PasswordValidationsState value)
+        passwordValidations,
+  }) {
+    return unauthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthInitial value)? initial,
+    TResult? Function(AuthLoading value)? loading,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult? Function(AuthError value)? error,
+    TResult? Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult? Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult? Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult? Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult? Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult? Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult? Function(PasswordValidationsState value)? passwordValidations,
+  }) {
+    return unauthenticated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthInitial value)? initial,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult Function(AuthError value)? error,
+    TResult Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult Function(PasswordValidationsState value)? passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-
-class EmailVerificationPending implements AuthState {
-  const EmailVerificationPending(this.email);
-
-  final String email;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EmailVerificationPendingCopyWith<EmailVerificationPending> get copyWith =>
-      _$EmailVerificationPendingCopyWithImpl<EmailVerificationPending>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is EmailVerificationPending &&
-            (identical(other.email, email) || other.email == email));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, email);
-
-  @override
-  String toString() {
-    return 'AuthState.emailVerificationPending(email: $email)';
-  }
+abstract class Unauthenticated implements AuthState {
+  const factory Unauthenticated() = _$UnauthenticatedImpl;
 }
 
 /// @nodoc
-abstract mixin class $EmailVerificationPendingCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory $EmailVerificationPendingCopyWith(EmailVerificationPending value,
-          $Res Function(EmailVerificationPending) _then) =
-      _$EmailVerificationPendingCopyWithImpl;
+abstract class _$$EmailVerificationPendingImplCopyWith<$Res> {
+  factory _$$EmailVerificationPendingImplCopyWith(
+          _$EmailVerificationPendingImpl value,
+          $Res Function(_$EmailVerificationPendingImpl) then) =
+      __$$EmailVerificationPendingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String email});
 }
 
 /// @nodoc
-class _$EmailVerificationPendingCopyWithImpl<$Res>
-    implements $EmailVerificationPendingCopyWith<$Res> {
-  _$EmailVerificationPendingCopyWithImpl(this._self, this._then);
-
-  final EmailVerificationPending _self;
-  final $Res Function(EmailVerificationPending) _then;
+class __$$EmailVerificationPendingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$EmailVerificationPendingImpl>
+    implements _$$EmailVerificationPendingImplCopyWith<$Res> {
+  __$$EmailVerificationPendingImplCopyWithImpl(
+      _$EmailVerificationPendingImpl _value,
+      $Res Function(_$EmailVerificationPendingImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? email = null,
   }) {
-    return _then(EmailVerificationPending(
+    return _then(_$EmailVerificationPendingImpl(
       null == email
-          ? _self.email
+          ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -1034,30 +977,26 @@ class _$EmailVerificationPendingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class AuthError implements AuthState {
-  const AuthError(this.message);
+class _$EmailVerificationPendingImpl implements EmailVerificationPending {
+  const _$EmailVerificationPendingImpl(this.email);
 
-  final String message;
+  @override
+  final String email;
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AuthErrorCopyWith<AuthError> get copyWith =>
-      _$AuthErrorCopyWithImpl<AuthError>(this, _$identity);
+  @override
+  String toString() {
+    return 'AuthState.emailVerificationPending(email: $email)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AuthError &&
-            (identical(other.message, message) || other.message == message));
+            other is _$EmailVerificationPendingImpl &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-<<<<<<< HEAD
-  int get hashCode => Object.hash(runtimeType, message);
-=======
   int get hashCode => Object.hash(runtimeType, email);
 
   @JsonKey(ignore: true)
@@ -1066,14 +1005,28 @@ class AuthError implements AuthState {
   _$$EmailVerificationPendingImplCopyWith<_$EmailVerificationPendingImpl>
       get copyWith => __$$EmailVerificationPendingImplCopyWithImpl<
           _$EmailVerificationPendingImpl>(this, _$identity);
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
 
   @override
-  String toString() {
-    return 'AuthState.error(message: $message)';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String email) emailVerificationPending,
+    required TResult Function(String message) error,
+    required TResult Function() registerPasswordObsecure,
+    required TResult Function() registerPasswordNotObsecure,
+    required TResult Function() registerPasswordConfirmationObsecure,
+    required TResult Function() registerPasswordConfirmationNotObsecure,
+    required TResult Function() loginPasswordObsecure,
+    required TResult Function() loginPasswordNotObsecure,
+    required TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
+        passwordValidations,
+  }) {
+    return emailVerificationPending(email);
   }
-<<<<<<< HEAD
-=======
 
   @override
   @optionalTypeArgs
@@ -1210,32 +1163,33 @@ abstract class EmailVerificationPending implements AuthState {
   @JsonKey(ignore: true)
   _$$EmailVerificationPendingImplCopyWith<_$EmailVerificationPendingImpl>
       get copyWith => throw _privateConstructorUsedError;
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
 }
 
 /// @nodoc
-abstract mixin class $AuthErrorCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory $AuthErrorCopyWith(AuthError value, $Res Function(AuthError) _then) =
-      _$AuthErrorCopyWithImpl;
+abstract class _$$AuthErrorImplCopyWith<$Res> {
+  factory _$$AuthErrorImplCopyWith(
+          _$AuthErrorImpl value, $Res Function(_$AuthErrorImpl) then) =
+      __$$AuthErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$AuthErrorCopyWithImpl<$Res> implements $AuthErrorCopyWith<$Res> {
-  _$AuthErrorCopyWithImpl(this._self, this._then);
-
-  final AuthError _self;
-  final $Res Function(AuthError) _then;
+class __$$AuthErrorImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthErrorImpl>
+    implements _$$AuthErrorImplCopyWith<$Res> {
+  __$$AuthErrorImplCopyWithImpl(
+      _$AuthErrorImpl _value, $Res Function(_$AuthErrorImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(AuthError(
+    return _then(_$AuthErrorImpl(
       null == message
-          ? _self.message
+          ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -1244,19 +1198,26 @@ class _$AuthErrorCopyWithImpl<$Res> implements $AuthErrorCopyWith<$Res> {
 
 /// @nodoc
 
-class RegisterPasswordObsecure implements AuthState {
-  const RegisterPasswordObsecure();
+class _$AuthErrorImpl implements AuthError {
+  const _$AuthErrorImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'AuthState.error(message: $message)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RegisterPasswordObsecure);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-<<<<<<< HEAD
-  int get hashCode => runtimeType.hashCode;
-=======
   int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
@@ -1445,32 +1406,23 @@ class __$$RegisterPasswordObsecureImplCopyWithImpl<$Res>
 
 class _$RegisterPasswordObsecureImpl implements RegisterPasswordObsecure {
   const _$RegisterPasswordObsecureImpl();
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
 
   @override
   String toString() {
     return 'AuthState.registerPasswordObsecure()';
   }
-}
-
-/// @nodoc
-
-class RegisterPasswordNotObsecure implements AuthState {
-  const RegisterPasswordNotObsecure();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RegisterPasswordNotObsecure);
+            other is _$RegisterPasswordObsecureImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -1647,30 +1599,21 @@ class _$RegisterPasswordNotObsecureImpl implements RegisterPasswordNotObsecure {
   const _$RegisterPasswordNotObsecureImpl();
 
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   String toString() {
     return 'AuthState.registerPasswordNotObsecure()';
   }
-}
-
-/// @nodoc
-
-class RegisterPasswordConfirmationObsecure implements AuthState {
-  const RegisterPasswordConfirmationObsecure();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RegisterPasswordConfirmationObsecure);
+            other is _$RegisterPasswordNotObsecureImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -1850,30 +1793,21 @@ class _$RegisterPasswordConfirmationObsecureImpl
   const _$RegisterPasswordConfirmationObsecureImpl();
 
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   String toString() {
     return 'AuthState.registerPasswordConfirmationObsecure()';
   }
-}
-
-/// @nodoc
-
-class RegisterPasswordConfirmationNotObsecure implements AuthState {
-  const RegisterPasswordConfirmationNotObsecure();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RegisterPasswordConfirmationNotObsecure);
+            other is _$RegisterPasswordConfirmationObsecureImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -2053,29 +1987,21 @@ class _$RegisterPasswordConfirmationNotObsecureImpl
   const _$RegisterPasswordConfirmationNotObsecureImpl();
 
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   String toString() {
     return 'AuthState.registerPasswordConfirmationNotObsecure()';
   }
-}
-
-/// @nodoc
-
-class LoginPasswordObsecure implements AuthState {
-  const LoginPasswordObsecure();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoginPasswordObsecure);
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterPasswordConfirmationNotObsecureImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -2252,32 +2178,21 @@ class _$LoginPasswordObsecureImpl implements LoginPasswordObsecure {
   const _$LoginPasswordObsecureImpl();
 
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   String toString() {
     return 'AuthState.loginPasswordObsecure()';
   }
-}
-
-/// @nodoc
-
-class LoginPasswordNotObsecure implements AuthState {
-  const LoginPasswordNotObsecure();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LoginPasswordNotObsecure);
+        (other.runtimeType == runtimeType &&
+            other is _$LoginPasswordObsecureImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-<<<<<<< HEAD
-  String toString() {
-    return 'AuthState.loginPasswordNotObsecure()';
-  }
-=======
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -2677,38 +2592,39 @@ class __$$PasswordValidationsStateImplCopyWithImpl<$Res>
               as bool,
     ));
   }
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
 }
 
 /// @nodoc
 
-class PasswordValidationsState implements AuthState {
-  const PasswordValidationsState(
+class _$PasswordValidationsStateImpl implements PasswordValidationsState {
+  const _$PasswordValidationsStateImpl(
       {required this.hasLowercase,
       required this.hasUppercase,
       required this.hasSpecialCharacters,
       required this.hasNumber,
       required this.hasMinLength});
 
+  @override
   final bool hasLowercase;
+  @override
   final bool hasUppercase;
+  @override
   final bool hasSpecialCharacters;
+  @override
   final bool hasNumber;
+  @override
   final bool hasMinLength;
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $PasswordValidationsStateCopyWith<PasswordValidationsState> get copyWith =>
-      _$PasswordValidationsStateCopyWithImpl<PasswordValidationsState>(
-          this, _$identity);
+  @override
+  String toString() {
+    return 'AuthState.passwordValidations(hasLowercase: $hasLowercase, hasUppercase: $hasUppercase, hasSpecialCharacters: $hasSpecialCharacters, hasNumber: $hasNumber, hasMinLength: $hasMinLength)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PasswordValidationsState &&
+            other is _$PasswordValidationsStateImpl &&
             (identical(other.hasLowercase, hasLowercase) ||
                 other.hasLowercase == hasLowercase) &&
             (identical(other.hasUppercase, hasUppercase) ||
@@ -2725,78 +2641,165 @@ class PasswordValidationsState implements AuthState {
   int get hashCode => Object.hash(runtimeType, hasLowercase, hasUppercase,
       hasSpecialCharacters, hasNumber, hasMinLength);
 
-<<<<<<< HEAD
-  @override
-  String toString() {
-    return 'AuthState.passwordValidations(hasLowercase: $hasLowercase, hasUppercase: $hasUppercase, hasSpecialCharacters: $hasSpecialCharacters, hasNumber: $hasNumber, hasMinLength: $hasMinLength)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $PasswordValidationsStateCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory $PasswordValidationsStateCopyWith(PasswordValidationsState value,
-          $Res Function(PasswordValidationsState) _then) =
-      _$PasswordValidationsStateCopyWithImpl;
-  @useResult
-  $Res call(
-      {bool hasLowercase,
-      bool hasUppercase,
-      bool hasSpecialCharacters,
-      bool hasNumber,
-      bool hasMinLength});
-}
-
-/// @nodoc
-class _$PasswordValidationsStateCopyWithImpl<$Res>
-    implements $PasswordValidationsStateCopyWith<$Res> {
-  _$PasswordValidationsStateCopyWithImpl(this._self, this._then);
-
-  final PasswordValidationsState _self;
-  final $Res Function(PasswordValidationsState) _then;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-=======
   @JsonKey(ignore: true)
   @override
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? hasLowercase = null,
-    Object? hasUppercase = null,
-    Object? hasSpecialCharacters = null,
-    Object? hasNumber = null,
-    Object? hasMinLength = null,
+  _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
+      get copyWith => __$$PasswordValidationsStateImplCopyWithImpl<
+          _$PasswordValidationsStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function(String email) emailVerificationPending,
+    required TResult Function(String message) error,
+    required TResult Function() registerPasswordObsecure,
+    required TResult Function() registerPasswordNotObsecure,
+    required TResult Function() registerPasswordConfirmationObsecure,
+    required TResult Function() registerPasswordConfirmationNotObsecure,
+    required TResult Function() loginPasswordObsecure,
+    required TResult Function() loginPasswordNotObsecure,
+    required TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)
+        passwordValidations,
   }) {
-    return _then(PasswordValidationsState(
-      hasLowercase: null == hasLowercase
-          ? _self.hasLowercase
-          : hasLowercase // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasUppercase: null == hasUppercase
-          ? _self.hasUppercase
-          : hasUppercase // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasSpecialCharacters: null == hasSpecialCharacters
-          ? _self.hasSpecialCharacters
-          : hasSpecialCharacters // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasNumber: null == hasNumber
-          ? _self.hasNumber
-          : hasNumber // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasMinLength: null == hasMinLength
-          ? _self.hasMinLength
-          : hasMinLength // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return passwordValidations(hasLowercase, hasUppercase, hasSpecialCharacters,
+        hasNumber, hasMinLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppUser user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function(String email)? emailVerificationPending,
+    TResult? Function(String message)? error,
+    TResult? Function()? registerPasswordObsecure,
+    TResult? Function()? registerPasswordNotObsecure,
+    TResult? Function()? registerPasswordConfirmationObsecure,
+    TResult? Function()? registerPasswordConfirmationNotObsecure,
+    TResult? Function()? loginPasswordObsecure,
+    TResult? Function()? loginPasswordNotObsecure,
+    TResult? Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+  }) {
+    return passwordValidations?.call(hasLowercase, hasUppercase,
+        hasSpecialCharacters, hasNumber, hasMinLength);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppUser user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function(String email)? emailVerificationPending,
+    TResult Function(String message)? error,
+    TResult Function()? registerPasswordObsecure,
+    TResult Function()? registerPasswordNotObsecure,
+    TResult Function()? registerPasswordConfirmationObsecure,
+    TResult Function()? registerPasswordConfirmationNotObsecure,
+    TResult Function()? loginPasswordObsecure,
+    TResult Function()? loginPasswordNotObsecure,
+    TResult Function(bool hasLowercase, bool hasUppercase,
+            bool hasSpecialCharacters, bool hasNumber, bool hasMinLength)?
+        passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (passwordValidations != null) {
+      return passwordValidations(hasLowercase, hasUppercase,
+          hasSpecialCharacters, hasNumber, hasMinLength);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthInitial value) initial,
+    required TResult Function(AuthLoading value) loading,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(EmailVerificationPending value)
+        emailVerificationPending,
+    required TResult Function(AuthError value) error,
+    required TResult Function(RegisterPasswordObsecure value)
+        registerPasswordObsecure,
+    required TResult Function(RegisterPasswordNotObsecure value)
+        registerPasswordNotObsecure,
+    required TResult Function(RegisterPasswordConfirmationObsecure value)
+        registerPasswordConfirmationObsecure,
+    required TResult Function(RegisterPasswordConfirmationNotObsecure value)
+        registerPasswordConfirmationNotObsecure,
+    required TResult Function(LoginPasswordObsecure value)
+        loginPasswordObsecure,
+    required TResult Function(LoginPasswordNotObsecure value)
+        loginPasswordNotObsecure,
+    required TResult Function(PasswordValidationsState value)
+        passwordValidations,
+  }) {
+    return passwordValidations(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthInitial value)? initial,
+    TResult? Function(AuthLoading value)? loading,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult? Function(AuthError value)? error,
+    TResult? Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult? Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult? Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult? Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult? Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult? Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult? Function(PasswordValidationsState value)? passwordValidations,
+  }) {
+    return passwordValidations?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthInitial value)? initial,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(EmailVerificationPending value)? emailVerificationPending,
+    TResult Function(AuthError value)? error,
+    TResult Function(RegisterPasswordObsecure value)? registerPasswordObsecure,
+    TResult Function(RegisterPasswordNotObsecure value)?
+        registerPasswordNotObsecure,
+    TResult Function(RegisterPasswordConfirmationObsecure value)?
+        registerPasswordConfirmationObsecure,
+    TResult Function(RegisterPasswordConfirmationNotObsecure value)?
+        registerPasswordConfirmationNotObsecure,
+    TResult Function(LoginPasswordObsecure value)? loginPasswordObsecure,
+    TResult Function(LoginPasswordNotObsecure value)? loginPasswordNotObsecure,
+    TResult Function(PasswordValidationsState value)? passwordValidations,
+    required TResult orElse(),
+  }) {
+    if (passwordValidations != null) {
+      return passwordValidations(this);
+    }
+    return orElse();
   }
 }
 
-<<<<<<< HEAD
-// dart format on
-=======
 abstract class PasswordValidationsState implements AuthState {
   const factory PasswordValidationsState(
       {required final bool hasLowercase,
@@ -2814,4 +2817,3 @@ abstract class PasswordValidationsState implements AuthState {
   _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
->>>>>>> db5a978a7180de60fe8eb01104bcb06c1eb56a02
