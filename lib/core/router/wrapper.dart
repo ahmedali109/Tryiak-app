@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:tryiak/features/home/logic/home_cubit.dart';
+import 'package:tryiak/features/home/ui/widgets/message_pharmacy_screen.dart';
 import '../widgets/salomon_bottom_bar.dart';
 
 class MainWrapper extends StatefulWidget {
@@ -21,58 +23,66 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    // Keep the bottom bar selection in sync with the navigation shell's current index
     final currentIndex = widget.navigationShell.currentIndex;
-    return Scaffold(
-      body: widget.navigationShell,
-      bottomNavigationBar: CustomSalomonBottomBar(
-        selectedIndex: currentIndex,
-        onTabChange: (index) {
-          // when user taps the bar, instruct navigation shell to switch branch
-          _goBranch(index);
-          // rebuild so the bar reflects the change
-          setState(() {});
-        },
-      ),
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Theme.of(context).brightness == Brightness.dark
-                  ? const Color(0xFF4A90E2)
-                  : const Color(0xFF4A90E2),
-              Theme.of(context).brightness == Brightness.dark
-                  ? const Color(0xFF357ABD)
-                  : const Color(0xFF2868A6),
-            ],
+
+    return BlocProvider(
+      create: (_) => HomeCubit()..initialize(),
+      child: Builder(builder: (context) {
+        return Scaffold(
+          body: widget.navigationShell,
+          bottomNavigationBar: CustomSalomonBottomBar(
+            selectedIndex: currentIndex,
+            onTabChange: (index) {
+              _goBranch(index);
+              setState(() {});
+            },
           ),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFF4A90E2).withOpacity(0.4),
-              blurRadius: 20,
-              spreadRadius: 2,
-              offset: const Offset(0, 8),
+          floatingActionButton: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  const Color(0xFF4A90E2),
+                  const Color(0xFF2868A6),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF4A90E2).withOpacity(0.4),
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 8),
+                ),
+              ],
             ),
-          ],
-        ),
-        child: FloatingActionButton(
-          onPressed: () {
-            //TODO : implement action
-          },
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const Icon(
-            Icons.upload_rounded,
-            size: 28,
-            color: Colors.white,
+            child: FloatingActionButton(
+              onPressed: () {
+                final homeCubit = context.read<HomeCubit>();
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => MessagePharmacyScreen(
+                      initialLocation: homeCubit.selectedLocation,
+                    ),
+                  ),
+                );
+              },
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              child: const Icon(
+                Icons.upload_rounded,
+                size: 28,
+                color: Colors.white,
+              ),
+            ),
           ),
-        ),
-      ),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        );
+      }),
     );
   }
 }
