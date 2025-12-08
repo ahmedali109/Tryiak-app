@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
@@ -7,10 +8,10 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart Screen'),
+        title: Text("cart_screen".tr()),
       ),
-      body: const Center(
-        child: Text('Welcome to the Cart Screen!'),
+      body: Center(
+        child: Text("welcome_to_cart".tr()),
       ),
     );
   }

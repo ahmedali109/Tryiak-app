@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -43,16 +44,17 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             children: [
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text("Take Photo"),
+                title: Text("take_photo".tr()),
                 onTap: () async {
                   Navigator.pop(context);
-
-                  // طلب صلاحيات الكاميرا
                   var status = await Permission.camera.request();
                   if (!status.isGranted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Camera permission denied")),
-                    );
+                    if (mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text("camera_permission_denied".tr())),
+                      );
+                    }
                     return;
                   }
 
@@ -68,7 +70,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text("Choose from Gallery"),
+                title: Text("choose_from_gallery".tr()),
                 onTap: () async {
                   Navigator.pop(context);
 
@@ -84,7 +86,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.close),
-                title: const Text("Cancel"),
+                title: Text("cancel".tr()),
                 onTap: () => Navigator.pop(context),
               ),
             ],
@@ -113,7 +115,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Request'),
+        title: Text("create_request".tr()),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -128,7 +130,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(color: Colors.grey.shade200, blurRadius: 6),
@@ -210,7 +211,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             const SizedBox(height: 18),
 
             // ---------------- Quantity ----------------
-            Text('Quantity',
+            Text("quantity".tr(),
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
@@ -218,7 +219,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
@@ -253,7 +253,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             const SizedBox(height: 18),
 
             // ---------------- Delivery Option ----------------
-            Text('Delivery Option',
+            Text("delivery_options".tr(),
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
@@ -279,7 +279,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                       child: Column(
                         children: [
                           Text(
-                            'Delivery',
+                            "delivery".tr(),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: _deliveryOptionIndex == 0
                                   ? Colors.blue
@@ -287,7 +287,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             ),
                           ),
                           Text(
-                            'To your address',
+                            "to_your_address".tr(),
                             style: theme.textTheme.bodySmall
                                 ?.copyWith(color: Colors.grey[600]),
                           ),
@@ -313,7 +313,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                       child: Column(
                         children: [
                           Text(
-                            'Pickup',
+                            "pickup".tr(),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: _deliveryOptionIndex == 1
                                   ? Colors.blue
@@ -321,7 +321,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             ),
                           ),
                           Text(
-                            'From pharmacy',
+                            "from_pharmacy".tr(),
                             style: theme.textTheme.bodySmall
                                 ?.copyWith(color: Colors.grey[600]),
                           ),
@@ -337,14 +337,13 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
             // ---------------- Address if Delivery ----------------
             if (_deliveryOptionIndex == 0) ...[
-              Text('Delivery Address',
+              Text("delivery_address".tr(),
                   style: theme.textTheme.bodyLarge
                       ?.copyWith(fontWeight: FontWeight.w600)),
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
@@ -396,7 +395,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                       ),
-                      child: const Text('Choose on Map'),
+                      child: Text("choose_on_map".tr()),
                     ),
                   ],
                 ),
@@ -405,7 +404,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             ],
 
             // ---------------- Note to Pharmacy ----------------
-            Text('Note to Pharmacy (Optional)',
+            Text("${'note_to_pharmacy'.tr()} (${'optional'.tr()})",
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
@@ -413,15 +412,14 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: TextField(
                 controller: _noteController,
                 maxLines: 3,
-                decoration: const InputDecoration(
-                  hintText: 'Any special instructions...',
+                decoration: InputDecoration(
+                  hintText: "any_special_instructions".tr(),
                   border: InputBorder.none,
                   isDense: true,
                 ),
@@ -431,7 +429,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
             const SizedBox(height: 18),
 
             // ---------------- Prescription Upload ----------------
-            Text('Prescription (Optional)',
+            Text("${'prescription'.tr()} (${'optional'.tr()})",
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
@@ -445,7 +443,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
@@ -455,7 +452,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             children: [
                               Icon(Icons.upload_file, color: Colors.grey[600]),
                               const SizedBox(height: 6),
-                              Text("Upload Prescription",
+                              Text("upload_prescription".tr(),
                                   style: TextStyle(color: Colors.grey[700])),
                             ],
                           )
@@ -479,7 +476,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                       onTap: _removePrescription,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white70,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(6),
@@ -501,8 +497,8 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
           child: ElevatedButton(
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Request sent (placeholder)'),
+                SnackBar(
+                  content: Text("request_sent".tr()),
                 ),
               );
             },
@@ -512,7 +508,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: const Text('Send Request to Nearby Pharmacies'),
+            child: Text("send_request_to_pharmacies".tr()),
           ),
         ),
       ),

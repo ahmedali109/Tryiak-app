@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -91,8 +92,8 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Could not get address: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('${'could_not_get_address'.tr()}: $e')));
       }
       setState(() {
         _selectedAddress = null;
@@ -115,7 +116,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
         _selected ?? LatLng(30.0444, 31.2357); // Cairo default if no selection
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Location'),
+        title: Text("select_location".tr()),
       ),
       body: Stack(
         children: [
@@ -174,7 +175,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: _selected == null ? null : _confirm,
-                            child: const Text('Confirm Location'),
+                            child: Text("confirm_location".tr()),
                           ),
                         ),
                       ],

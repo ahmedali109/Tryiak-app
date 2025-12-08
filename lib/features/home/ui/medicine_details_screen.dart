@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../data/model/medicine_model.dart';
 import 'create_request_screen.dart';
@@ -12,7 +13,7 @@ class MedicineDetailsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Medicine Details'),
+        title: Text("medicine_details".tr()),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -71,7 +72,7 @@ class MedicineDetailsScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Form',
+                          Text("form".tr(),
                               style: theme.textTheme.bodySmall
                                   ?.copyWith(color: Colors.grey[700])),
                           const SizedBox(height: 6),
@@ -97,7 +98,7 @@ class MedicineDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Strength',
+                        Text("strength".tr(),
                             style: theme.textTheme.bodySmall
                                 ?.copyWith(color: Colors.grey[700])),
                         const SizedBox(height: 6),
@@ -127,7 +128,7 @@ class MedicineDetailsScreen extends StatelessWidget {
                     children: [
                       const Icon(Icons.info_outline, size: 18),
                       const SizedBox(width: 8),
-                      Text('Description',
+                      Text("description".tr(),
                           style: theme.textTheme.bodyLarge
                               ?.copyWith(fontWeight: FontWeight.w600)),
                     ],
@@ -165,7 +166,7 @@ class MedicineDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
               ),
-              child: const Text('Request this Medicine'),
+              child: Text("request_this_medicine".tr()),
             ),
           ),
         ),

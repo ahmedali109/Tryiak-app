@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../logic/location_cubit.dart';
@@ -30,21 +31,18 @@ class LocationPermissionDialog extends StatelessWidget {
         );
       },
       child: AlertDialog(
-        title: const Text('Allow Location Access'),
-        content: const Text(
-          'To provide you with better service, we need access to your location. '
-          'This helps us show nearby medicines and pharmacies.',
-        ),
+        title: Text("allow_location_access".tr()),
+        content: Text("location_access_message".tr()),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Not Now'),
+            child: Text("not_now".tr()),
           ),
           ElevatedButton(
             onPressed: () {
               context.read<LocationCubit>().requestLocationPermission();
             },
-            child: const Text('Allow'),
+            child: Text("allow".tr()),
           ),
         ],
       ),

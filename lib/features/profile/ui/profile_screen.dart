@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             expandedHeight: 280,
             pinned: true,
             elevation: 0,
-            backgroundColor: theme.colorScheme.secondary,
+            backgroundColor: Colors.transparent,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(

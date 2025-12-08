@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tryiak/features/location/ui/select_location_screen.dart';
@@ -42,7 +43,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
             children: [
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text("Take Photo"),
+                title: Text("take_photo".tr()),
                 onTap: () async {
                   Navigator.pop(context);
                   final picked = await _picker.pickImage(
@@ -56,7 +57,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.photo),
-                title: const Text("Choose from Gallery"),
+                title: Text("choose_from_gallery".tr()),
                 onTap: () async {
                   Navigator.pop(context);
                   final picked = await _picker.pickImage(
@@ -70,7 +71,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.close),
-                title: const Text("Cancel"),
+                title: Text("cancel".tr()),
                 onTap: () => Navigator.pop(context),
               ),
             ],
@@ -98,7 +99,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Message Pharmacy'),
+        title: Text("message_pharmacy".tr()),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -110,7 +111,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Delivery Option',
+              "delivery_options".tr(),
               style: theme.textTheme.bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w600),
             ),
@@ -132,17 +133,11 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                               : Colors.grey.shade200,
                         ),
                         borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade100,
-                            blurRadius: 6,
-                          )
-                        ],
                       ),
                       child: Column(
                         children: [
                           Text(
-                            'Delivery',
+                            "delivery".tr(),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: _deliveryOptionIndex == 0
                                   ? Colors.blue
@@ -150,7 +145,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                             ),
                           ),
                           Text(
-                            'To your address',
+                            "to_your_address".tr(),
                             style: theme.textTheme.bodySmall
                                 ?.copyWith(color: Colors.grey[600]),
                           ),
@@ -166,24 +161,17 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         border: Border.all(
                           color: _deliveryOptionIndex == 1
                               ? Colors.blue
                               : Colors.grey.shade200,
                         ),
                         borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade100,
-                            blurRadius: 6,
-                          )
-                        ],
                       ),
                       child: Column(
                         children: [
                           Text(
-                            'Pickup',
+                            "pickup".tr(),
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: _deliveryOptionIndex == 1
                                   ? Colors.blue
@@ -191,7 +179,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                             ),
                           ),
                           Text(
-                            'From pharmacy',
+                            "from_pharmacy".tr(),
                             style: theme.textTheme.bodySmall
                                 ?.copyWith(color: Colors.grey[600]),
                           ),
@@ -205,7 +193,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
             const SizedBox(height: 18),
             if (_deliveryOptionIndex == 0) ...[
               Text(
-                'Delivery Address',
+                "delivery_address".tr(),
                 style: theme.textTheme.bodyLarge
                     ?.copyWith(fontWeight: FontWeight.w600),
               ),
@@ -213,11 +201,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,12 +245,15 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                         backgroundColor: Colors.blue.shade50,
                         foregroundColor: Colors.blue[700],
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 12,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: const Text('Choose on Map'),
+                      child: Text("choose_on_map".tr()),
                     ),
                   ],
                 ),
@@ -274,7 +261,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
               const SizedBox(height: 18),
             ],
             Text(
-              'Note to Pharmacy (Optional)',
+              "${'note_to_pharmacy'.tr()} (${'optional'.tr()})",
               style: theme.textTheme.bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w600),
             ),
@@ -282,15 +269,14 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: TextField(
                 controller: _noteController,
                 maxLines: 3,
-                decoration: const InputDecoration(
-                  hintText: 'Any special instructions...',
+                decoration: InputDecoration(
+                  hintText: "any_special_instructions".tr(),
                   border: InputBorder.none,
                   isDense: true,
                 ),
@@ -298,7 +284,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
             ),
             const SizedBox(height: 18),
             Text(
-              'Prescription (Optional)',
+              "${'prescription'.tr()} (${'optional'.tr()})",
               style: theme.textTheme.bodyLarge
                   ?.copyWith(fontWeight: FontWeight.w600),
             ),
@@ -312,7 +298,6 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
@@ -323,7 +308,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                               Icon(Icons.upload_file, color: Colors.grey[600]),
                               const SizedBox(height: 6),
                               Text(
-                                "Upload Prescription",
+                                "upload_prescription".tr(),
                                 style: TextStyle(color: Colors.grey[700]),
                               ),
                             ],
@@ -346,7 +331,6 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                       onTap: _removePrescription,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.white70,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(6),
@@ -374,7 +358,7 @@ class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: const Text('Send Message'),
+            child: Text("send_message".tr()),
           ),
         ),
       ),
