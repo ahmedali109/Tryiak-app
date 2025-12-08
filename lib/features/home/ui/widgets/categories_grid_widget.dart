@@ -5,10 +5,10 @@ class CategoriesGridWidget extends StatelessWidget {
   final Function(String) onCategoryTap;
 
   const CategoriesGridWidget({
-    Key? key,
+    super.key,
     required this.categories,
     required this.onCategoryTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

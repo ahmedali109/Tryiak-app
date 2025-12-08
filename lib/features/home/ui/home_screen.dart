@@ -13,7 +13,7 @@ import 'package:tryiak/core/router/go_router.dart' as app_paths;
 import 'medicine_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

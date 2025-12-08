@@ -7,9 +7,9 @@ class LocationPermissionDialog extends StatelessWidget {
   final VoidCallback onPermissionGranted;
 
   const LocationPermissionDialog({
-    Key? key,
+    super.key,
     required this.onPermissionGranted,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

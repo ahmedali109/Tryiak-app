@@ -11,11 +11,10 @@ class SelectLocationScreen extends StatefulWidget {
   final String? initialAddress;
 
   const SelectLocationScreen(
-      {Key? key,
+      {super.key,
       this.initialLatitude,
       this.initialLongitude,
-      this.initialAddress})
-      : super(key: key);
+      this.initialAddress});
 
   @override
   State<SelectLocationScreen> createState() => _SelectLocationScreenState();

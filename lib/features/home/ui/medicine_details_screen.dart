@@ -5,8 +5,7 @@ import 'create_request_screen.dart';
 class MedicineDetailsScreen extends StatelessWidget {
   final MedicineModel medicine;
 
-  const MedicineDetailsScreen({Key? key, required this.medicine})
-      : super(key: key);
+  const MedicineDetailsScreen({super.key, required this.medicine});
 
   @override
   Widget build(BuildContext context) {
