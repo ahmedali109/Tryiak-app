@@ -73,15 +73,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 onTap: () async {
                   Navigator.pop(context);
 
-                  var statusPhotos = await Permission.photos.request();
-                  if (!statusPhotos.isGranted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text("Gallery permission denied")),
-                    );
-                    return;
-                  }
-
                   final picked = await _picker.pickImage(
                     source: ImageSource.gallery,
                     imageQuality: 80,
