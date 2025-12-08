@@ -173,5 +173,18 @@
   "password_reset_success_title": "تم إعادة تعيين كلمة المرور بنجاح!",
   "password_reset_success_subtitle": "تم تحديث كلمة المرور الخاصة بك. سيتم إعادة توجيهك إلى صفحة تسجيل الدخول قريباً.",
   "redirecting_to_login": "جاري إعادة التوجيه إلى تسجيل الدخول...",
-  "password_must_contain": "كلمة المرور يجب أن تفي بجميع المتطلبات"
+  "password_must_contain": "كلمة المرور يجب أن تفي بجميع المتطلبات",
+  "account_information": "معلومات الحساب",
+  "phone_number": "رقم الهاتف",
+  "saved_addresses": "العناوين المحفوظة",
+  "payment_methods": "طرق الدفع",
+  "terms_conditions": "الشروط والأحكام",
+  "privacy_policy": "سياسة الخصوصية",
+  "app_version": "إصدار التطبيق",
+  "log_out": "تسجيل الخروج",
+  "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "edit_profile": "تعديل الملف الشخصي",
+  "settings": "الإعدادات",
+  "theme": "السمة",
+  "appearance": "المظهر"
 }

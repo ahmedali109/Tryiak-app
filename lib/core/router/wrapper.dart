@@ -34,6 +34,45 @@ class _MainWrapperState extends State<MainWrapper> {
           setState(() {});
         },
       ),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Theme.of(context).brightness == Brightness.dark
+                  ? const Color(0xFF4A90E2)
+                  : const Color(0xFF4A90E2),
+              Theme.of(context).brightness == Brightness.dark
+                  ? const Color(0xFF357ABD)
+                  : const Color(0xFF2868A6),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF4A90E2).withOpacity(0.4),
+              blurRadius: 20,
+              spreadRadius: 2,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        child: FloatingActionButton(
+          onPressed: () {
+            //TODO : implement action
+          },
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          child: const Icon(
+            Icons.upload_rounded,
+            size: 28,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

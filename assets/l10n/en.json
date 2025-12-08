@@ -176,5 +176,17 @@
   "password_reset_success_title": "Password Reset Successfully!",
   "password_reset_success_subtitle": "Your password has been updated. You will be redirected to the login page shortly.",
   "redirecting_to_login": "Redirecting to login...",
-  "password_must_contain": "Password must meet all requirements"
+  "password_must_contain": "Password must meet all requirements",
+  "account_information": "Account Information",
+  "saved_addresses": "Saved Addresses",
+  "payment_methods": "Payment Methods",
+  "terms_conditions": "Terms & Conditions",
+  "privacy_policy": "Privacy Policy",
+  "app_version": "App Version",
+  "log_out": "Log Out",
+  "logout_confirmation": "Are you sure you want to log out?",
+  "edit_profile": "Edit Profile",
+  "settings": "Settings",
+  "theme": "Theme",
+  "appearance": "Appearance"
 }

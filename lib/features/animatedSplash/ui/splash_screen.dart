@@ -43,8 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _handleNavigationFlow() async {
     if (_hasNavigated) return;
 
-    final isOnboardingComplete =
-        await SharedPrefHelper.getBool(AppStrings.onboardingComplete) ?? false;
+    final isOnboardingComplete = await SharedPrefHelper.getBool(AppStrings.onboardingComplete);
 
     if (!mounted) return;
 

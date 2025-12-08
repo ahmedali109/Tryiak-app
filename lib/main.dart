@@ -18,8 +18,7 @@ import 'app.dart';
 bool isOnboardingComplete = false;
 
 Future<void> checkOnboardingComplete() async {
-  isOnboardingComplete =
-      await SharedPrefHelper.getBool(AppStrings.onboardingComplete) ?? false;
+  isOnboardingComplete = await SharedPrefHelper.getBool(AppStrings.onboardingComplete);
 }
 
 Future<void> checkCurrentThemeMode() async {
