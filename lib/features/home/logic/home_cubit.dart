@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tryiak/features/location/data/location_model.dart';
 import '../data/model/medicine_model.dart';
+
 import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -9,11 +11,12 @@ class HomeCubit extends Cubit<HomeState> {
   String _currentCategory = '';
   String _searchQuery = '';
 
+  LocationModel? selectedLocation;
+
   void initialize() {
     emit(const HomeState.loading());
 
     try {
-      // TODO: Replace with actual API calls later
       final medicines = [
         MedicineModel(
             name: "Panadol",
@@ -60,7 +63,6 @@ class HomeCubit extends Cubit<HomeState> {
         {"title": "Kitchen", "image": "assets/med1.png"},
       ];
 
-      // Keep as MedicineModel instances (carry additional fields)
       _allMedicines = medicines;
 
       emit(HomeState.loaded(
@@ -71,6 +73,20 @@ class HomeCubit extends Cubit<HomeState> {
     } catch (e) {
       emit(HomeState.error(e.toString()));
     }
+  }
+
+  void setLocation(LocationModel location) {
+    selectedLocation = location;
+    state.maybeWhen(
+      loaded: (banners, categories, medicines) {
+        emit(HomeState.loaded(
+          banners: banners,
+          categories: categories,
+          medicines: medicines,
+        ));
+      },
+      orElse: () {},
+    );
   }
 
   void searchMedicines(String query) {
@@ -88,7 +104,6 @@ class HomeCubit extends Cubit<HomeState> {
       loaded: (banners, categories, medicines) {
         var filteredMedicines = List<MedicineModel>.from(_allMedicines);
 
-        // Apply category filter (if category field existed)
         if (_currentCategory.isNotEmpty) {
           filteredMedicines = filteredMedicines
               .where((m) =>
@@ -96,7 +111,6 @@ class HomeCubit extends Cubit<HomeState> {
               .toList();
         }
 
-        // Apply search filter (search name, genericName or form)
         if (_searchQuery.isNotEmpty) {
           filteredMedicines = filteredMedicines.where((m) {
             final q = _searchQuery;

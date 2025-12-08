@@ -1,34 +1,33 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:tryiak/features/location/ui/select_location_screen.dart';
 import 'package:tryiak/features/location/data/location_model.dart';
-import '../data/model/medicine_model.dart';
 
-class CreateRequestScreen extends StatefulWidget {
-  final MedicineModel medicine;
+class MessagePharmacyScreen extends StatefulWidget {
+  final LocationModel? initialLocation;
 
-  const CreateRequestScreen({super.key, required this.medicine});
+  const MessagePharmacyScreen({
+    super.key,
+    this.initialLocation,
+  });
 
   @override
-  State<CreateRequestScreen> createState() => _CreateRequestScreenState();
+  State<MessagePharmacyScreen> createState() => _MessagePharmacyScreenState();
 }
 
-class _CreateRequestScreenState extends State<CreateRequestScreen> {
-  int _quantity = 1;
+class _MessagePharmacyScreenState extends State<MessagePharmacyScreen> {
   int _deliveryOptionIndex = 0;
   LocationModel? _selectedLocation;
 
-  // Prescription Image Picker
   XFile? _prescriptionFile;
   final ImagePicker _picker = ImagePicker();
-
   final TextEditingController _noteController = TextEditingController();
 
-  void _increment() => setState(() => _quantity++);
-  void _decrement() {
-    if (_quantity > 1) setState(() => _quantity--);
+  @override
+  void initState() {
+    super.initState();
+    _selectedLocation = widget.initialLocation;
   }
 
   Future<void> _pickPrescription() async {
@@ -46,21 +45,10 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 title: const Text("Take Photo"),
                 onTap: () async {
                   Navigator.pop(context);
-
-                  // طلب صلاحيات الكاميرا
-                  var status = await Permission.camera.request();
-                  if (!status.isGranted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Camera permission denied")),
-                    );
-                    return;
-                  }
-
                   final picked = await _picker.pickImage(
                     source: ImageSource.camera,
                     imageQuality: 80,
                   );
-
                   if (picked != null) {
                     setState(() => _prescriptionFile = picked);
                   }
@@ -71,12 +59,10 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 title: const Text("Choose from Gallery"),
                 onTap: () async {
                   Navigator.pop(context);
-
                   final picked = await _picker.pickImage(
                     source: ImageSource.gallery,
                     imageQuality: 80,
                   );
-
                   if (picked != null) {
                     setState(() => _prescriptionFile = picked);
                   }
@@ -108,15 +94,14 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final med = widget.medicine;
     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Request'),
+        title: const Text('Message Pharmacy'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
@@ -124,140 +109,12 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // ---------------- Medicine Card ----------------
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey.shade200, blurRadius: 6),
-                ],
-              ),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: med.imagePath.isNotEmpty
-                        ? Image.asset(
-                            med.imagePath,
-                            height: 64,
-                            width: 64,
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            height: 64,
-                            width: 64,
-                            color: Colors.grey[200],
-                          ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          med.name,
-                          style: theme.textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(height: 4),
-                        if ((med.genericName ?? '').isNotEmpty)
-                          Text(
-                            med.genericName!,
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(color: Colors.grey[700]),
-                          ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 6, horizontal: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.blue.shade50,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                med.form ?? '-',
-                                style: theme.textTheme.bodySmall
-                                    ?.copyWith(color: Colors.blue[700]),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 6, horizontal: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.green.shade50,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                med.form ?? '-',
-                                style: theme.textTheme.bodySmall
-                                    ?.copyWith(color: Colors.green[700]),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            Text(
+              'Delivery Option',
+              style: theme.textTheme.bodyLarge
+                  ?.copyWith(fontWeight: FontWeight.w600),
             ),
-
-            const SizedBox(height: 18),
-
-            // ---------------- Quantity ----------------
-            Text('Quantity',
-                style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
-
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: _decrement,
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.grey.shade100,
-                      child: const Icon(Icons.remove, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(width: 24),
-                  Text('$_quantity', style: theme.textTheme.titleMedium),
-                  const SizedBox(width: 24),
-                  GestureDetector(
-                    onTap: _increment,
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Colors.blue,
-                      child: const Icon(Icons.add, color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 18),
-
-            // ---------------- Delivery Option ----------------
-            Text('Delivery Option',
-                style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 8),
-
             Row(
               children: [
                 Expanded(
@@ -275,6 +132,12 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                               : Colors.grey.shade200,
                         ),
                         borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade100,
+                            blurRadius: 6,
+                          )
+                        ],
                       ),
                       child: Column(
                         children: [
@@ -303,12 +166,19 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
+                        color: Colors.white,
                         border: Border.all(
                           color: _deliveryOptionIndex == 1
                               ? Colors.blue
                               : Colors.grey.shade200,
                         ),
                         borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade100,
+                            blurRadius: 6,
+                          )
+                        ],
                       ),
                       child: Column(
                         children: [
@@ -332,14 +202,13 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 ),
               ],
             ),
-
             const SizedBox(height: 18),
-
-            // ---------------- Address if Delivery ----------------
             if (_deliveryOptionIndex == 0) ...[
-              Text('Delivery Address',
-                  style: theme.textTheme.bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.w600)),
+              Text(
+                'Delivery Address',
+                style: theme.textTheme.bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.w600),
+              ),
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(12),
@@ -394,7 +263,8 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
                       child: const Text('Choose on Map'),
                     ),
@@ -403,13 +273,12 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               ),
               const SizedBox(height: 18),
             ],
-
-            // ---------------- Note to Pharmacy ----------------
-            Text('Note to Pharmacy (Optional)',
-                style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.w600)),
+            Text(
+              'Note to Pharmacy (Optional)',
+              style: theme.textTheme.bodyLarge
+                  ?.copyWith(fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: 8),
-
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
@@ -427,15 +296,13 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: 18),
-
-            // ---------------- Prescription Upload ----------------
-            Text('Prescription (Optional)',
-                style: theme.textTheme.bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.w600)),
+            Text(
+              'Prescription (Optional)',
+              style: theme.textTheme.bodyLarge
+                  ?.copyWith(fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: 8),
-
             Stack(
               children: [
                 GestureDetector(
@@ -455,8 +322,10 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                             children: [
                               Icon(Icons.upload_file, color: Colors.grey[600]),
                               const SizedBox(height: 6),
-                              Text("Upload Prescription",
-                                  style: TextStyle(color: Colors.grey[700])),
+                              Text(
+                                "Upload Prescription",
+                                style: TextStyle(color: Colors.grey[700]),
+                              ),
                             ],
                           )
                         : ClipRRect(
@@ -469,13 +338,11 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                           ),
                   ),
                 ),
-
-                // زرار حذف الصورة
                 if (_prescriptionFile != null)
                   Positioned(
                     right: 8,
                     top: 8,
-                    child: GestureRecognizerWidget(
+                    child: GestureDetector(
                       onTap: _removePrescription,
                       child: Container(
                         decoration: BoxDecoration(
@@ -489,7 +356,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                   ),
               ],
             ),
-
             const SizedBox(height: 25),
           ],
         ),
@@ -500,11 +366,7 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
           height: 48,
           child: ElevatedButton(
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Request sent (placeholder)'),
-                ),
-              );
+              Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF75DDFA),
@@ -512,26 +374,10 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: const Text('Send Request to Nearby Pharmacies'),
+            child: const Text('Send Message'),
           ),
         ),
       ),
     );
-  }
-}
-
-class GestureRecognizerWidget extends StatelessWidget {
-  final VoidCallback onTap;
-  final Widget child;
-
-  const GestureRecognizerWidget({
-    super.key,
-    required this.onTap,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(onTap: onTap, child: child);
   }
 }
