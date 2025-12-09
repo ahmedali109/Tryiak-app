@@ -259,11 +259,12 @@
   "tax": "Tax",
   "order_timeline": "Order Timeline",
   "order_received": "Order Received",
-  "order_confirmed": "Order Confirmed",
   "out_for_delivery": "Out for Delivery",
   "contact_support": "Contact Support",
   "cancel_order": "Cancel Order",
   "cancel_order_confirmation": "Are you sure you want to cancel this order?",
   "order_cancelled_successfully": "Order cancelled successfully",
-  "free": "Free"
+  "free": "Free",
+  "welcome_to_tiryak": "Welcome to Tiryak.",
+  "popular_medicines": "Popular Medicines"
 }

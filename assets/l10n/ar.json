@@ -257,11 +257,12 @@
   "tax": "الضريبة",
   "order_timeline": "مراحل الطلب",
   "order_received": "تم استلام الطلب",
-  "order_confirmed": "تم تأكيد الطلب",
   "out_for_delivery": "جاري التوصيل",
   "contact_support": "الاتصال بالدعم",
   "cancel_order": "إلغاء الطلب",
   "cancel_order_confirmation": "هل أنت متأكد من إلغاء هذا الطلب؟",
   "order_cancelled_successfully": "تم إلغاء الطلب بنجاح",
-  "free": "مجاني"
+  "free": "مجاني",
+  "welcome_to_tiryak": "مرحباً بك في تيرياك.",
+  "popular_medicines": "الأدوية الشائعة"
 }

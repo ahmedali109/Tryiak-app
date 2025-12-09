@@ -131,9 +131,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey.shade200, blurRadius: 6),
-                ],
               ),
               child: Row(
                 children: [
@@ -220,9 +217,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                ],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -345,9 +339,6 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey.shade100, blurRadius: 6)
-                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -391,7 +382,8 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
                         backgroundColor: Colors.blue.shade50,
                         foregroundColor: Colors.blue[700],
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 16),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                       ),

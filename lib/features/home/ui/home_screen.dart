@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -70,9 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 8),
-                          const Text(
-                            'Welcome to Tiryak.',
-                            style: TextStyle(
+                          Text(
+                            "welcome_to_tiryak".tr(),
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        'Popular Medicines',
+                        "popular_medicines".tr(),
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.colorScheme.primary,
                           fontWeight: FontWeight.w700,
