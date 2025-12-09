@@ -19,7 +19,7 @@ class SearchBarWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     final input = SizedBox(
-      height: inHeader ? 40 : null,
+      height: inHeader ? 60 : null,
       child: TextField(
         controller: searchController,
         onChanged: onSearch,
@@ -34,9 +34,7 @@ class SearchBarWidget extends StatelessWidget {
             color: inHeader ? Colors.grey : theme.colorScheme.primary,
           ),
           filled: true,
-          fillColor: inHeader
-              ? Colors.white
-              : theme.colorScheme.secondary.withOpacity(0.06),
+          fillColor: theme.colorScheme.tertiary.withOpacity(0.06),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(inHeader ? 8 : 16),
             borderSide: BorderSide.none,

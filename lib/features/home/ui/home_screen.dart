@@ -52,49 +52,58 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF75DDFA),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 0,
+                      ),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: theme.brightness == Brightness.light
+                            ? const BoxDecoration(
+                                color: Color(0xFF75DDFA),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16),
+                                ),
+                              )
+                            : null,
+                        padding: const EdgeInsets.only(
+                          top: 16,
+                          left: 12,
+                          right: 12,
+                          bottom: 8,
                         ),
-                      ),
-                      padding: const EdgeInsets.only(
-                        top: 16,
-                        left: 12,
-                        right: 12,
-                        bottom: 8,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 8),
-                          Text(
-                            "welcome_to_tiryak".tr(),
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 8),
+                            Text(
+                              "welcome_to_tiryak".tr(),
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          SearchBarWidget(
-                            searchController: _searchController,
-                            onSearch: (query) {
-                              context.read<HomeCubit>().searchMedicines(query);
-                            },
-                            onTap: () {
-                              context.go(
-                                  '${app_paths.AppPath.search}?autofocus=true');
-                            },
-                            inHeader: true,
-                          ),
-                          const SizedBox(height: 8),
-                          const LocationBarWidget(),
-                          const SizedBox(height: 12),
-                        ],
+                            const SizedBox(height: 8),
+                            SearchBarWidget(
+                              searchController: _searchController,
+                              onSearch: (query) {
+                                context
+                                    .read<HomeCubit>()
+                                    .searchMedicines(query);
+                              },
+                              onTap: () {
+                                context.go(
+                                    '${app_paths.AppPath.search}?autofocus=true');
+                              },
+                              inHeader: true,
+                            ),
+                            const SizedBox(height: 8),
+                            const LocationBarWidget(),
+                            const SizedBox(height: 12),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
