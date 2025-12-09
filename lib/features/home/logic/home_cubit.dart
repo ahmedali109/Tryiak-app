@@ -20,19 +20,19 @@ class HomeCubit extends Cubit<HomeState> {
       final medicines = [
         MedicineModel(
             name: "Panadol",
-            imagePath: "assets/med1.png",
+            imagePath: "assets/images/Panadol.jpg",
             genericName: "Paracetamol",
             form: "Tablet • 500mg"),
         MedicineModel(
             name: "Brufen",
-            imagePath: "assets/med1.png",
+            imagePath: "assets/images/Brufen.jpg",
             genericName: "Ibuprofen",
             form: "Tablet • 400mg"),
         MedicineModel(
-            name: "Voltaren",
-            imagePath: "assets/med1.png",
-            genericName: "Diclofenac",
-            form: "Gel • 10g"),
+            name: "Augmentin",
+            imagePath: "assets/images/Augmentin.jpg",
+            genericName: "Amoxicillin + Clavulanic acid",
+            form: "Tablet • 625mg"),
         MedicineModel(
             name: "Adol",
             imagePath: "assets/med1.png",
@@ -44,10 +44,10 @@ class HomeCubit extends Cubit<HomeState> {
             genericName: "Diclofenac",
             form: "Tablet • 50mg"),
         MedicineModel(
-            name: "Augmentin",
+            name: "Voltaren",
             imagePath: "assets/med1.png",
-            genericName: "Amoxicillin + Clavulanic acid",
-            form: "Tablet • 625mg"),
+            genericName: "Diclofenac",
+            form: "Gel • 10g"),
       ];
 
       final banners = [
