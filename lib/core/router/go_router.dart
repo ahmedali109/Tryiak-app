@@ -7,6 +7,8 @@ import '../../features/auth/ui/reset_password_page.dart';
 import '../../features/auth/ui/verify_email_screen.dart';
 import '../../features/home/ui/home_screen.dart';
 import '../../features/onBoarding/onboarding_screen.dart';
+import '../../features/onBoarding/user_type_selection_screen.dart';
+import '../../features/pharmacy/ui/pharmacy_home_screen.dart';
 import '../../features/profile/ui/profile_screen.dart';
 import '../../features/orders/ui/orders_screen.dart';
 import 'wrapper.dart';
@@ -23,6 +25,10 @@ class AppPath {
   static const String cart = "/cart";
   static const String reminders = "/reminders";
   static const String account = "/account";
+  static const String userTypeSelection = "/userTypeSelection";
+  static const String pharmacyHome = "/pharmacyHome";
+  static const String pharmacyRequests = "/pharmacyRequests";
+  static const String pharmacyProfile = "/pharmacyProfile";
 }
 
 class AppPathName {
@@ -37,6 +43,10 @@ class AppPathName {
   static const String cart = "Cart";
   static const String reminders = "Reminders";
   static const String account = "Account";
+  static const String userTypeSelection = "UserTypeSelection";
+  static const String pharmacyHome = "PharmacyHome";
+  static const String pharmacyRequests = "PharmacyRequests";
+  static const String pharmacyProfile = "PharmacyProfile";
 }
 
 class AppNavigation {
@@ -168,6 +178,22 @@ class AppNavigation {
         name: AppPathName.splash,
         builder: (BuildContext context, GoRouterState state) =>
             const SplashScreen(),
+      ),
+
+      /// User Type Selection Screen
+      GoRoute(
+        path: AppPath.userTypeSelection,
+        name: AppPathName.userTypeSelection,
+        builder: (BuildContext context, GoRouterState state) =>
+            const UserTypeSelectionScreen(),
+      ),
+
+      /// Pharmacy Home Screen
+      GoRoute(
+        path: AppPath.pharmacyHome,
+        name: AppPathName.pharmacyHome,
+        builder: (BuildContext context, GoRouterState state) =>
+            const PharmacyHomeScreen(),
       ),
 
       /// Onboarding Screen

@@ -43,7 +43,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _handleNavigationFlow() async {
     if (_hasNavigated) return;
 
-    final isOnboardingComplete = await SharedPrefHelper.getBool(AppStrings.onboardingComplete);
+    final isOnboardingComplete =
+        await SharedPrefHelper.getBool(AppStrings.onboardingComplete);
 
     if (!mounted) return;
 
@@ -55,9 +56,9 @@ class _SplashScreenState extends State<SplashScreen> {
       final authState = context.read<AuthCubit>().state;
       authState.maybeWhen(
         authenticated: (user) => context.go(AppPath.home),
-        unauthenticated: () => context.go(AppPath.authGate),
+        unauthenticated: () => context.go(AppPath.userTypeSelection),
         orElse: () {
-          context.go(AppPath.authGate);
+          context.go(AppPath.userTypeSelection);
         },
       );
     }

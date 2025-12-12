@@ -14,6 +14,7 @@ import 'core/theme/theme_provider.dart';
 import 'features/auth/logic/auth_cubit.dart';
 
 import 'app.dart';
+import 'features/pharmacy/logic/pharmacy_cubit.dart';
 
 bool isOnboardingComplete = false;
 
@@ -54,6 +55,9 @@ void main() async {
             ),
             BlocProvider.value(
               value: di<NotificationCubit>(),
+            ),
+            BlocProvider.value(
+              value: di<PharmacyCubit>(),
             ),
           ],
           child: Tryiak(),

@@ -14,8 +14,8 @@ class Tryiak extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => di<LocationCubit>()..requestLocationPermission(),
+    return BlocProvider.value(
+        value: di<LocationCubit>()..requestLocationPermission(),
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
           minTextAdapt: true,
